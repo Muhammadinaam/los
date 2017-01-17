@@ -39,6 +39,9 @@ Route::group(['middleware' => ['active_user']], function(){
 
 	Route::get('dashboard', 'DashboardController@index');
 
+	Route::get('search-projects', 'ProjectsController@searchProjects');
+	Route::get('projects-datatable', 'ProjectsController@searchProjects_datatable');
+
 });
 
 Route::group(['middleware' => ['company_owner']], function(){
