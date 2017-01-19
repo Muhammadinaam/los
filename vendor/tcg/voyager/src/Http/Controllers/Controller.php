@@ -105,6 +105,12 @@ abstract class Controller extends BaseController
                         else
                             $data->{$row->field} = null;
                     }
+
+                    if( strpos(strtoupper($options->validation->rule), 'NUMERIC') !== false )
+                    {
+                        if($data->{$row->field} == '')
+                            $data->{$row->field} = 0;
+                    }
                 }
             }
         }

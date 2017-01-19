@@ -4,7 +4,12 @@
 
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{{asset('public/lightbox2/css/lightbox.min.css')}}">
 
+.display th
+{
+   background-color: lightgray !important;
+}
 
 @endsection
 
@@ -36,12 +41,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Add Tags</h4>
+        <h4 class="modal-title">Add Tag</h4>
       </div>
 
       <div class="modal-body">
       
-        <form class="form-horizontal" id="add-tags-form" method="post" action="{{url('add-tags')}}">
+        <form class="form-horizontal" id="add-tag-form" method="post" action="{{url('add-tag')}}">
           <fieldset>
           <!-- Select Basic -->
           <div class="form-group">
@@ -76,15 +81,54 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div id="myModal_notes" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Note</h4>
+      </div>
+
+      <div class="modal-body">
+      
+        <form class="form-horizontal" id="add-note-form" method="post" action="{{url('add-note')}}">
+          <fieldset>
+          <!-- Textarea -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="note">Note</label>
+            <div class="col-md-4">                     
+              <textarea class="form-control" id="note" name="note"></textarea>
+            </div>
+          </div>
+
+          <!-- Button -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="btn-submit"></label>
+            <div class="col-md-4">
+              <button type="button" id="btn-submit" name="btn-submit" class="btn btn-primary">Add Note</button>
+            </div>
+          </div>
+
+          </fieldset>
+        </form>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 
 <!--SERVICE SECTION-->
-<section id="projects" style="padding-top: 20px;">
-  <div style="overflow: auto;" class="container">
-     
-     <div class="row">
-      
-      <div class="col-md-12">
+<section id="projects" style="padding: 20px 50px 0px 50px;">
+  
 
       <div class="btn-group">
         <button id="btn-add-tags" class="btn btn-primary">Add Tag to Selected Projects</button>
@@ -104,29 +148,26 @@
             <thead>
               <tr>
                 <th></th>
-                <th>Title</th>
-                <th>Status</th>
-                <th>Industry</th>
-                <th>Type</th>
-                <th>Country</th>
-                <th>City</th>
-                <th>Address</th> 
-                <th>Client</th>         
-                <th>Consultant</th>         
-                <th>Contractor</th>         
-                <th>Tags</th>
-                <th>Notes</th>
+                <th bgcolor="lightgray" >Title</th>
+                <th bgcolor="lightgray" >Image</th>
+                <th bgcolor="lightgray" >Status</th>
+                <th bgcolor="lightgray" >Industry</th>
+                <th bgcolor="lightgray" >Type</th>
+                <th bgcolor="lightgray" >Country</th>
+                <th bgcolor="lightgray" >City</th>
+                <th bgcolor="lightgray" >Address</th> 
+                <th bgcolor="lightgray" >Client</th>         
+                <th bgcolor="lightgray" >Consultant</th>         
+                <th bgcolor="lightgray" >Contractor</th>         
+                <th bgcolor="lightgray" >Tags</th>
+                <th bgcolor="lightgray" >Notes</th>
               </tr>
             </thead>
           </table>
 
         </div>
 
-      </div>
-
-
-      </div> 
-  </div>
+      
 </section>
 
 
@@ -138,6 +179,7 @@
 
 <script type="text/javascript" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="{{asset('public/lightbox2/js/lightbox.min.js')}}" ></script>
 
 
 <script type="text/javascript">
@@ -151,9 +193,11 @@
             ajax: '{{url("projects-datatable")}}',
             responsive: true,
             fixedHeader: true,
+            "scrollX": true,
             columns: [
                 { data: 'select', name: 'select', searchable: false, orderable: false },
                 { data: 'title', name: 'projects.title' },
+                { data: 'image', name: 'projects.image' },
                 { data: 'status', name: 'projects.status' },
                 { data: 'industry', name: 'projects.industry' },
                 { data: 'type', name: 'projects.type' },
@@ -171,6 +215,19 @@
 
     $('#btn-add-tags').click(function(){
       $('#myModal_tags').modal('show', {backdrop: 'static', keyboard: false});
+    });
+
+    $(document).on('change', "input[type='checkbox']", function(){
+
+      $('#add-tag-form #' + $(this).attr('id')).remove();
+      $('#add-note-form #' + $(this).attr('id')).remove();
+
+      if(this.checked) {
+
+            $('#add-tag-form').append('<input id="'+$(this).attr('id')+'" type="hidden" name=projects[] value="'+$(this).attr('id')+'">');
+            $('#add-note-form').append('<input id="'+$(this).attr('id')+'" type="hidden" name=projects[] value="'+$(this).attr('id')+'">');
+
+        }
     });
 
   });

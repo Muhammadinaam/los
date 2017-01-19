@@ -30,6 +30,11 @@ class User extends AuthUser
         return ucwords($value);
     }
 
+    public function role_id()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
     public function getCreatedAtAttribute($value)
     {
         return Carbon::parse($value)->format('F jS, Y h:i A');

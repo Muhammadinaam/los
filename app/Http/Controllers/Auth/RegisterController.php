@@ -79,6 +79,7 @@ class RegisterController extends Controller
             'mobile' => $data['mobile'],
             'trial_ends_at' => Carbon::now()->addDays(config('app.trial_period_days')),
             'company_owner' => '1',
+            'activated' => '1',
         ]);
     }
 }

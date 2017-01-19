@@ -7,6 +7,7 @@ use DB;
 use Datatables;
 use App\Project;
 use Auth;
+use Voyager;
 
 class ProjectsController extends Controller
 {
@@ -41,12 +42,29 @@ class ProjectsController extends Controller
                             $join->on('projects.id', '=', 'projectnotes.project_id')
                             ->where('projectnotes.user_id', '=', Auth::user()->id);
                         })
-                        ->select('projects.id', 'projects.title', 'projects.status', 'projects.industry', 'projects.type', 'projects.country', 'projects.city', 'projects.address', 'projects.client', 'projects.consultant', 'projects.main_contractor', 'projecttags.tag', 'projectnotes.note');
+                        ->select('projects.id', 'projects.title', 'projects.image', 'projects.status', 'projects.industry', 'projects.type', 'projects.country', 'projects.city', 'projects.address', 'projects.client', 'projects.consultant', 'projects.main_contractor', 'projecttags.tag', 'projectnotes.note');
 
         return Datatables::of($query)
                     ->addColumn('select', function($project){
-                            return '<input type="checkbox" value="'.$project->id.'">';
+                            return '<input type="checkbox" value="'.$project->id.'" id="'.$project->id.'">';
                         })
+                    ->editColumn('image', function($project){
+
+                        $image = Voyager::image( $project->image );
+
+                        if($image != '')
+                        {
+                            return "
+                                    <a href='".Voyager::image( $project->image )."' data-lightbox='image'  >
+                                        <img src='".Voyager::image( $project->image )."' style='width:100px'>
+                                    </a>
+                                    ";
+                        }
+                        else
+                        {
+                            return '';
+                        }
+                    })
                     ->make(true);
 
     }

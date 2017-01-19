@@ -46,6 +46,10 @@ class ActiveUser
             }
             else
             {
+
+                if($request->user()->activated == '0')
+                    return redirect('inactive_account')->with('data', ['reason' => $request->user()->not_activated_reason]);
+
                 if( $request->user()->parent_user()->subscribed('main') == false && 
                     $request->user()->parent_user()->onTrial() == false )
                 {
