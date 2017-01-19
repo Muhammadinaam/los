@@ -42,6 +42,10 @@ Route::group(['middleware' => ['active_user']], function(){
 	Route::get('search-projects', 'ProjectsController@searchProjects');
 	Route::get('projects-datatable', 'ProjectsController@searchProjects_datatable');
 
+	Route::post('add-tag', 'ProjectsController@addTag');
+	Route::post('add-note', 'ProjectsController@addNote');
+	Route::post('mark-favourite', 'ProjectsController@markFavourite');
+
 });
 
 Route::group(['middleware' => ['company_owner']], function(){
