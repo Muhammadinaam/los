@@ -146,6 +146,10 @@ th
 {{csrf_field()}}
 </form>
 
+<form id="remove-favourite-form" method="post" action="{{url('remove-favourite')}}">
+{{csrf_field()}}
+</form>
+
 
 
 <!--SERVICE SECTION-->
@@ -224,6 +228,7 @@ th
           <button id="btn-add-tags" class="btn btn-default"> <i class="fa fa-tag" aria-hidden="true"></i> Add Tag</button>
           <button id="btn-add-notes" class="btn btn-default"> <i class="fa fa-sticky-note" aria-hidden="true"></i> Add Note</button>
           <button id="btn-mark-favourite" class="btn btn-default"> <i class="fa fa-star" aria-hidden="true"></i> Mark Favourite</button>
+          <button id="btn-mark-favourite" class="btn btn-default"> <i class="fa fa-star-half-o" aria-hidden="true"></i> Remove Favourite Mark</button>
 
         </div>
       
@@ -370,6 +375,12 @@ th
             $('#mark-favourite-form').append('<input id="id-'+$(this).attr('id')+'" type="hidden" name=projects[] value="'+$(this).attr('id')+'">');
         }
     });
+
+    function pulse() {
+        $('.blink').fadeTo(300, 0.3);
+        $('.blink').fadeTo(500, 1);
+    }
+    setInterval(pulse, 1000);
 
   });
 

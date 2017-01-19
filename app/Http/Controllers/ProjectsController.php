@@ -75,14 +75,20 @@ class ProjectsController extends Controller
 
         $query->orderBy('construction_start_date', 'desc')
             ->latest()
-            ->select('projects.id', 'projects.title', 'projects.image', 'projects.status', 'projects.industry', 'projects.type', 'projects.country', 'projects.city', 'projects.address', 'projects.client', 'projects.consultant', 'projects.main_contractor', 'projecttags.tag', 'projectnotes.note');
+            ->select('projects.id', 'projects.title', 'projects.image', 'projects.status', 'projects.industry', 'projects.type', 'projects.country', 'projects.city', 'projects.address', 'projects.client', 'projects.consultant', 'projects.main_contractor', 'projecttags.tag', 'projectnotes.note', 'favouriteprojects.id as favourite_id' );
 
         return Datatables::of($query)
                     ->addColumn('select', function($project){
                             return '<input type="checkbox" value="'.$project->id.'" id="'.$project->id.'">';
                         })
                     ->editColumn('title', function($project){
-                        return $project->title.
+
+                        $star = "";
+
+                        if($project->favourite_id != '')
+                            $star = '<i style="color:blue;" class="fa fa-star blink" aria-hidden="true"></i> ';
+
+                        return $star . $project->title.
                                     '<br><a class="btn btn-xs btn-success" href="'.url('project').'/'.$project->id.'"> Details </a>';
                     })
                     ->editColumn('image', function($project){
