@@ -95,7 +95,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Projects</a>
             <ul class="dropdown-menu">
               <li><a href="{{url('search-projects')}}">Search Projects</a></li>
-              <li><a href="{{url('favourite-projects')}}">Favourite Projects</a></li>
+              <li><a href="{{url('project-updates')}}">Project Updates</a></li>
             </ul>
           </li>
           @else

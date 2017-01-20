@@ -45,6 +45,14 @@ Route::group(['middleware' => ['active_user']], function(){
 	Route::post('add-tag', 'ProjectsController@addTag');
 	Route::post('add-note', 'ProjectsController@addNote');
 	Route::post('mark-favourite', 'ProjectsController@markFavourite');
+	Route::post('remove-favourite', 'ProjectsController@removeFavourite');
+	Route::get('project/{id}', 'ProjectsController@show');
+
+
+	Route::get('project-updates', 'UpdatesController@indexNonAdmin');
+	Route::get('project-updates-datatable', 'UpdatesController@datatableNonAdmin');
+
+
 
 });
 

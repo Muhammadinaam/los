@@ -134,7 +134,7 @@ class ProjectsController extends Controller
             }
         }
      
-        return redirect('search-projects');   
+        return back();   
     }
 
     public function addNote(Request $request)
@@ -161,7 +161,7 @@ class ProjectsController extends Controller
             }
         }
      
-        return redirect('search-projects');  
+        return back();  
     }
 
     public function markFavourite(Request $request)
@@ -183,6 +183,61 @@ class ProjectsController extends Controller
             }
         }
      
-        return redirect('search-projects');  
+        return back();  
+    }
+
+    public function removeFavourite(Request $request)
+    {
+        if($request->has('projects') )
+        {
+            $projectIDs = $request->input('projects');
+
+            foreach ($projectIDs as $key => $projectID) {
+
+                DB::table('favouriteprojects')
+                    ->where('user_id', Auth::user()->id)
+                    ->where('project_id', $projectID)
+                    ->delete();
+            }
+        }
+     
+        return back();  
+    }
+
+    public function show($id)
+    {
+        $project = Project::find($id);
+
+        $isFav = 0;
+
+        if ( count ( DB::table('favouriteprojects')
+                    ->where('user_id', Auth::user()->id)
+                    ->where('project_id', $project->id)
+                    ->first() ) > 0 )
+        {
+            $isFav = 1;
+        }
+
+        $tag = '';
+
+        $tagTable = DB::table('projecttags')
+                    ->where('user_id', Auth::user()->id)
+                    ->where('project_id', $project->id)
+                    ->first();
+
+        if( count( $tagTable ) > 0 )
+            $tag = $tagTable->tag;
+
+        $note = '';
+
+        $noteTable = DB::table('projectnotes')
+                    ->where('user_id', Auth::user()->id)
+                    ->where('project_id', $project->id)
+                    ->first();
+
+        if( count( $noteTable ) > 0 )
+            $note = $noteTable->note;        
+
+        return view('projects.show', compact('project', 'isFav', 'tag', 'note') );
     }
 }

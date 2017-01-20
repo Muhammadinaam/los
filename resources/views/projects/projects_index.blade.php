@@ -228,7 +228,7 @@ th
           <button id="btn-add-tags" class="btn btn-default"> <i class="fa fa-tag" aria-hidden="true"></i> Add Tag</button>
           <button id="btn-add-notes" class="btn btn-default"> <i class="fa fa-sticky-note" aria-hidden="true"></i> Add Note</button>
           <button id="btn-mark-favourite" class="btn btn-default"> <i class="fa fa-star" aria-hidden="true"></i> Mark Favourite</button>
-          <button id="btn-mark-favourite" class="btn btn-default"> <i class="fa fa-star-half-o" aria-hidden="true"></i> Remove Favourite Mark</button>
+          <button id="btn-remove-favourite" class="btn btn-default"> <i class="fa fa-star-half-o" aria-hidden="true"></i> Remove Favourite Mark</button>
 
         </div>
       
@@ -358,6 +358,19 @@ th
 
     });
 
+    $('#btn-remove-favourite').click(function(){
+
+      if($('#remove-favourite-form [name="projects[]"]').length > 0)
+      {
+        $('#remove-favourite-form').submit();
+      }
+      else
+      {
+        alert('Please select one or more projects!');
+      } 
+
+    });
+
     $(document).on('change', ".filterbox input[type='checkbox']", function(){
       table.draw();
     });
@@ -367,12 +380,14 @@ th
       $('#add-tag-form #id-' + $(this).attr('id')).remove();
       $('#add-note-form #id-' + $(this).attr('id')).remove();
       $('#mark-favourite-form #id-' + $(this).attr('id')).remove();
+      $('#remove-favourite-form #id-' + $(this).attr('id')).remove();
 
       if(this.checked) {
 
             $('#add-tag-form').append('<input id="id-'+$(this).attr('id')+'" type="hidden" name=projects[] value="'+$(this).attr('id')+'">');
             $('#add-note-form').append('<input id="id-'+$(this).attr('id')+'" type="hidden" name=projects[] value="'+$(this).attr('id')+'">');
             $('#mark-favourite-form').append('<input id="id-'+$(this).attr('id')+'" type="hidden" name=projects[] value="'+$(this).attr('id')+'">');
+            $('#remove-favourite-form').append('<input id="id-'+$(this).attr('id')+'" type="hidden" name=projects[] value="'+$(this).attr('id')+'">');
         }
     });
 
