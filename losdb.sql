@@ -129,7 +129,7 @@ CREATE TABLE `favouriteprojects` (
   `user_id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COMMENT='	';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COMMENT='	';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,7 +138,7 @@ CREATE TABLE `favouriteprojects` (
 
 LOCK TABLES `favouriteprojects` WRITE;
 /*!40000 ALTER TABLE `favouriteprojects` DISABLE KEYS */;
-INSERT INTO `favouriteprojects` VALUES (10,4,2);
+INSERT INTO `favouriteprojects` VALUES (14,4,2);
 /*!40000 ALTER TABLE `favouriteprojects` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -392,7 +392,7 @@ CREATE TABLE `projectnotes` (
   `note` varchar(1000) NOT NULL,
   `shared_with_team` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -401,7 +401,7 @@ CREATE TABLE `projectnotes` (
 
 LOCK TABLES `projectnotes` WRITE;
 /*!40000 ALTER TABLE `projectnotes` DISABLE KEYS */;
-INSERT INTO `projectnotes` VALUES (17,4,2,'sdf',1);
+INSERT INTO `projectnotes` VALUES (18,4,2,'asdfasdf asdf as asdf asdf asdfa sdf ',1);
 /*!40000 ALTER TABLE `projectnotes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -467,7 +467,7 @@ CREATE TABLE `projecttags` (
   `project_id` int(11) DEFAULT NULL,
   `tag` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -476,7 +476,7 @@ CREATE TABLE `projecttags` (
 
 LOCK TABLES `projecttags` WRITE;
 /*!40000 ALTER TABLE `projecttags` DISABLE KEYS */;
-INSERT INTO `projecttags` VALUES (9,4,2,'Actioned'),(4,4,1,'Actioned');
+INSERT INTO `projecttags` VALUES (13,4,2,'To Action Now'),(4,4,1,'Actioned');
 /*!40000 ALTER TABLE `projecttags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -491,8 +491,10 @@ CREATE TABLE `recentlyviewedprojects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -501,6 +503,7 @@ CREATE TABLE `recentlyviewedprojects` (
 
 LOCK TABLES `recentlyviewedprojects` WRITE;
 /*!40000 ALTER TABLE `recentlyviewedprojects` DISABLE KEYS */;
+INSERT INTO `recentlyviewedprojects` VALUES (1,4,2,'2017-01-20 12:20:35',NULL),(2,4,1,'2017-01-20 12:27:40',NULL);
 /*!40000 ALTER TABLE `recentlyviewedprojects` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -666,7 +669,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Admin','admin@admin.com','$2y$10$OYGm9r07lgU6EpYAMV2TKuJBrIHqOb1VB5WhDSJmUwovsNP/4Mo/e','JaLd7BYs4HQW4PHx6z4aRJUyEPswyCFQaiI7xDkoRkyBztOOFYH5cu7pRmGJ','2017-01-04 01:46:42','2017-01-19 03:03:52','users/default.png',1,'','','','','',0,0,'',NULL,NULL,NULL,NULL,NULL),(4,'Inaam','minaammunir@gmail.com','$2y$10$Yya5Aea2E1MR/tRDzbbp7uRogJQZKsCopHHwRM1W8j5.0vlkFRN2K','v9YE3G73Z0UI1mT5OAjL1e7E6bDrCkWVgTJIupii1w2BE2qA89x9CwH7wUPR','2017-01-12 01:56:29','2017-01-19 03:05:23','users/default.png',2,'hashtag','Pakistan','Lahore','123456','123456',1,1,'',NULL,'cus_9uwSrgTORwH0iB','Visa','4242','2017-07-11 01:56:29');
+INSERT INTO `users` VALUES (1,'Admin','admin@admin.com','$2y$10$OYGm9r07lgU6EpYAMV2TKuJBrIHqOb1VB5WhDSJmUwovsNP/4Mo/e','JaLd7BYs4HQW4PHx6z4aRJUyEPswyCFQaiI7xDkoRkyBztOOFYH5cu7pRmGJ','2017-01-04 01:46:42','2017-01-20 02:53:48','users/default.png',1,'','','','','',0,0,'','2017-01-20 02:53:48',NULL,NULL,NULL,NULL),(4,'Inaam','minaammunir@gmail.com','$2y$10$Yya5Aea2E1MR/tRDzbbp7uRogJQZKsCopHHwRM1W8j5.0vlkFRN2K','Aeml6f8sKBKlnjDZfLOyTfFlGzBHdcJ4aVn5X9zW8DrZ5eb8flPl8ChK7gNt','2017-01-12 01:56:29','2017-01-20 00:41:12','users/default.png',2,'hashtag','Pakistan','Lahore','123456','123456',1,1,'','2017-01-20 00:41:12','cus_9uwSrgTORwH0iB','Visa','4242','2017-07-11 01:56:29');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -679,4 +682,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-19 18:27:09
+-- Dump completed on 2017-01-20 17:43:50

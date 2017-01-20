@@ -236,7 +236,13 @@ class ProjectsController extends Controller
                     ->first();
 
         if( count( $noteTable ) > 0 )
-            $note = $noteTable->note;        
+            $note = $noteTable->note;  
+
+        
+        DB::table('recentlyviewedprojects')
+                ->insert([
+                        ['user_id' => Auth::user()->id, 'project_id' => $project->id ]
+                    ]);
 
         return view('projects.show', compact('project', 'isFav', 'tag', 'note') );
     }

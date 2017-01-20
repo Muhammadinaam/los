@@ -91,6 +91,9 @@
           <li class="active"><a href="{{url('')}}">Home</a></li>
           
           @if(Auth::check())
+
+          <li><a href="{{url('dashboard')}}">Dashboard</a></li>
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Projects</a>
             <ul class="dropdown-menu">

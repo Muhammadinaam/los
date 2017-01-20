@@ -131,18 +131,10 @@
 
 <!-- Mark Favourite Form -->
 
-<form id="mark-favourite-form" method="post" action="{{url('mark-favourite')}}">
+<form id="mark-favourite-form" method="post" action="{{ $isFav != 1 ? url('mark-favourite') : url('remove-favourite')}}">
 {{csrf_field()}}
 <input type="hidden" name="projects[]" value="{{$project->id}}">
 </form>
-
-<form id="remove-favourite-form" method="post" action="{{url('remove-favourite')}}">
-{{csrf_field()}}
-<input type="hidden" name="projects[]" value="{{$project->id}}">
-</form>
-
-
-
 
 
 
@@ -282,7 +274,7 @@
 
             <button id="btn-add-tags" class="btn btn-default"> <i class="fa fa-tag" aria-hidden="true"></i></button>
           <button id="btn-add-notes" class="btn btn-default"> <i class="fa fa-sticky-note" aria-hidden="true"></i></button>
-          <button id="btn-mark-favourite" class="btn btn-default"> <i class="fa fa-star" aria-hidden="true"></i></button>
+          <button id="btn-mark-favourite" class="btn btn-default"> <i {!! $isFav == '1' ? 'style="color:blue;"' : '' !!}  class="fa fa-star" aria-hidden="true"></i></button>
 
             <br><br>
 
@@ -312,47 +304,45 @@
 
           </div>
           <div class="widget heading_space">
-            <h3 class="heading half_space">Categories<span class="divider-left"></span></h3>
+            <h3 class="heading half_space">Similar Projects<span class="divider-left"></span></h3>
              <ul class="category">
-              <li><a href="#.">Tiling & Painting</a></li>
-              <li><a href="#.">Renovations</a></li>
-              <li><a href="#.">Design & Build</a></li>
-              <li><a href="#.">Consulting</a></li>
-              <li><a href="#.">Management</a></li>
-              <li><a href="#.">Wood Flooring</a></li>
+
+              <?php
+
+                $similarProjects = DB::table('projects')
+                                      ->where('type', $project->type)
+                                      ->where('id', '<>', $project->id)
+                                      ->inRandomOrder()
+                                      ->limit(5)
+                                      ->get();
+
+
+              ?>
+
+              @foreach( $similarProjects as $similarProject )
+              <li><a href="{{url('project' . '/' . $similarProject->id)}}">{{$similarProject->title}}</a></li>
+              @endforeach
+
+
             </ul>
           </div>
           <div class="widget heading_space">
-            <h3 class="heading half_space">Recent Posts<span class="divider-left"></span></h3>
+            <h3 class="heading half_space">Recent Updates<span class="divider-left"></span></h3>
+            
+             @foreach($project->updates()->orderBy('date', 'desc')->limit(3)->get() as $update)
             <div class="single_post">
-            <img src="images/post1.jpg" alt="post image">
-            <p>in: Tips , Advice</p>
-            <a href="#.">Before Making your Dream Room</a>
+            <a href='{{Voyager::image("$update->image1")}}' data-lightbox='image-recent-{{$update->id}}'>
+              <img class="img img-thumbnail" src='{{Voyager::image("$update->image1")}}' style='width:200px;'>
+            </a>
+            <br>
+            <small>{{\Carbon\Carbon::parse($update->date)->format('d-M-Y')}}</small>
             </div>
-            <div class="single_post margin10">
-            <img src="images/post2.jpg" alt="post image">
-            <p>in: Tips , Advice</p>
-            <a href="#.">Before Making your Dream Room</a>
-            </div>
-            <div class="single_post margin10">
-            <img src="images/post3.jpg" alt="post image">
-            <p>in: Tips , Advice</p>
-            <a href="#.">Before Making your Dream Room</a>
-            </div>
+            <hr>
+            @endforeach
+            
+            
           </div>
-          <div class="widget">
-            <h3 class="heading half_space">Popular Tags<span class="divider-left"></span></h3>
-            <ul class="tags">
-             <li><a href="#." class="border-radius">Dream room</a></li>
-              <li><a href="#." class="border-radius">Fresh</a></li>
-              <li><a href="#." class="border-radius">Theory</a></li>
-              <li><a href="#." class="border-radius">Responsive</a></li>
-              <li><a href="#." class="border-radius">Wordpress Template</a></li>
-              <li><a href="#." class="border-radius">Modern</a></li>
-              <li><a href="#." class="border-radius">Business</a></li>
-              <li><a href="#." class="border-radius">Wood</a></li>
-            </ul>
-          </div>
+          
         </aside>
       </div>
     </div>
