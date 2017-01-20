@@ -44,33 +44,36 @@
 		  							->get();
 		  	?>
 
-		  	@foreach($recentlyViewed as $project)
+		  	
 
-		  	<div class="row">
-			  	<div  class="col-md-4">
-			  		@if($project->image != '')
-				  	<a href='{{Voyager::image("$project->image")}}' data-lightbox='image-recent-{{$project->id}}'>
-		              <img class="img img-thumbnail" src='{{Voyager::image("$project->image")}}' style='width:150px;'>
-		            </a>
-		            @endif
-		        </div>
+		  	<table>
+		  		@foreach($recentlyViewed as $project)
+		  		<tr style="border-bottom: 1px solid lightgray;">
+		  			<td class="col-md-4">
+			  			@if($project->image != '')
+					  	<a href='{{Voyager::image("$project->image")}}' data-lightbox='image-recent-{{$project->id}}'>
+			              <img class="img img-thumbnail" src='{{Voyager::image("$project->image")}}' style='width:150px;'>
+			            </a>
+			            @endif
+			        </td>
+		  			<td class="col-md-8">
+		  				<b><a style="text-decoration: underline;" href="{{url('project') .'/'. $project->id  }}">{{$project->title}}</a></b>
+			            <br>
+			            <small>
+				            {{$project->address}}<br>
+				            {{$project->city}}<br>
+				            {{$project->country}}
+				        </small>
+		  			</td>
+		  		</tr>
+		  		@endforeach
+		  	</table>
 
-		        <div  class="col-md-8">
+		  	
 
-		            <b><a style="text-decoration: underline;" href="{{url('project') .'/'. $project->id  }}">{{$project->title}}</a></b>
-		            <br>
-		            <small>{{$project->address}}<br>
-		            {{$project->city}}<br>
-		            {{$project->country}}</small>
-
-		        </div>
-	        </div>
-
-	        @if($loop->last == false)
-	        <hr>
-	        @endif
+	        
             
-            @endforeach
+            
 
 		  </div>
 		</div>
