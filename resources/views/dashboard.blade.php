@@ -74,10 +74,10 @@
 		  		$recentlyViewed = DB::table('recentlyviewedprojects')
 		  							->leftJoin('projects', 'projects.id', '=', 'recentlyviewedprojects.project_id')
 		  							->where('recentlyviewedprojects.user_id', Auth::user()->id)
-		  							->orderBy(DB::raw('any_value(recentlyviewedprojects.created_at)'), 'desc')
-		  							->groupBy('projects.id')
+		  							->orderBy(DB::raw('max(recentlyviewedprojects.created_at)'), 'desc')
+		  							->groupBy('projects.id', 'projects.title')
 		  							->select('projects.id', 'projects.title', 'projects.image', 'projects.address',
-		  								'projects.city', 'projects.country', DB::raw('any_value(recentlyviewedprojects.created_at)'))
+		  								'projects.city', 'projects.country', DB::raw('max(recentlyviewedprojects.created_at)'))
 		  							->limit(5)
 		  							->get();
 		  	?>

@@ -19,27 +19,27 @@
                 </div>
             </div>
             <?php } ?>
-            <?php if (Illuminate\Support\Facades\Schema::hasTable(with(new TCG\Voyager\Models\Post())->getTable())) { ?>
+            <?php if (Illuminate\Support\Facades\Schema::hasTable(with(new App\Project())->getTable())) { ?>
             <div class="panel widget center bgimage" style="background-image:url({{ config('voyager.assets_path') }}/images/widget-backgrounds/03.png);">
                 <div class="dimmer"></div>
                 <div class="panel-content">
                     <i class="voyager-news"></i>
-                    <?php $post_count = TCG\Voyager\Models\Post::count(); ?>
-                    <h4>{{ $post_count }} Post(s)</h4>
-                    <p>You have {{ $post_count }} Posts in your database. Click on 'View All Posts' below to view all posts.</p>
-                    <a href="{{ route('voyager.posts.index') }}" class="btn btn-primary">View All Posts</a>
+                    <?php $project_count = App\Project::count(); ?>
+                    <h4>{{ $project_count }} Projects(s)</h4>
+                    <p>You have {{ $project_count }} Projects in your database. Click on 'View All Projects' below to view all projects.</p>
+                    <a href="{{ url('admin/projects') }}" class="btn btn-primary">View All Projects</a>
                 </div>
             </div>
             <?php } ?>
-            <?php if (Illuminate\Support\Facades\Schema::hasTable(with(new TCG\Voyager\Models\Page())->getTable())) { ?>
+            <?php if (Illuminate\Support\Facades\Schema::hasTable(with(new App\Update())->getTable())) { ?>
             <div class="panel widget center bgimage" style="background-image:url({{ config('voyager.assets_path') }}/images/widget-backgrounds/04.png);">
                 <div class="dimmer"></div>
                 <div class="panel-content">
                     <i class="voyager-file-text"></i>
-                    <?php $page_count = TCG\Voyager\Models\Page::count(); ?>
-                    <h4>{{ $page_count }} Page(s)</h4>
-                    <p>You have {{ $page_count }} Pages in your database. Click on 'View All Pages' below to view all pages.</p>
-                    <a href="{{ route('voyager.pages.index') }}" class="btn btn-primary">View All Pages</a>
+                    <?php $updates_count = App\Update::count(); ?>
+                    <h4>{{ $updates_count }} Update(s)</h4>
+                    <p>You have {{ $updates_count }} Updates in your database. Click on 'View All Updates' below to view all pages.</p>
+                    <a href="{{ url('admin/updates') }}" class="btn btn-primary">View All Updates</a>
                 </div>
             </div>
             <?php } ?>
