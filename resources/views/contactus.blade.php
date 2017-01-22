@@ -35,21 +35,21 @@
     <div class="row padding-bottom">
       <div class="col-md-4 contact_address heading_space">
       <h2 class="heading heading_space">Get in Touch <span class="divider-left"></span></h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+      <p>Fill in the form or reach us on (+971) 111-222-333 in the UAE</p>
       <div class="address">
         <i class="icon icon-map-pin"></i>
         <h4>Visit Us</h4>
-        <p>Tottenham Road, Japan.</p>
+        <p>Union, United Arab Emirates</p>
       </div>
       <div class="address">
         <i class="icon icon-mail"></i>
         <h4>Email Us</h4>
-        <p><a href="mailto:buildingx@info.com">buildingx@info.com</a></p>
+        <p><a href="mailto:info@leadsonsite.com">info@leadsonsite.com</a></p>
       </div>
       <div class="address">
         <i class="icon icon-phone4"></i>
         <h4>Call Us</h4>
-        <p>(+01) 123 456 7890</p>
+        <p>(971) 111 222 333</p>
       </div>
       </div>
       <div class="col-md-8">
@@ -103,5 +103,21 @@
 
 @section('scripts')
 
+<script>
+  function initMap() {
+    var location = {lat: 25.2317, lng: 55.3240};
+    var map = new google.maps.Map(document.getElementById('map_canvas'), {
+      zoom: 15,
+      center: location
+    });
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map
+    });
+  }
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyYnVu3EY9FMV1c6CJ2zdDhLaLjmBY5xY&callback=initMap">
+</script>
 
 @endsection

@@ -4,13 +4,17 @@
 
 <br><br>
 
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading"> {{ isset($add_team_member) ? 'Add Team Member' : 'Register' }}</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                    <form class="form-horizontal" role="form" method="POST" 
+                    action="{{ isset($add_team_member) ? url('/add-team-member') : url('/register') }}">
+
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -63,7 +67,7 @@
                             </div>
                         </div>
 
-
+                        @if( isset($add_team_member) == false )
                         <div class="form-group{{ $errors->has('company_name') ? ' has-error' : '' }}">
                             <label for="company_name" class="col-md-4 control-label">Company Name</label>
 
@@ -77,6 +81,7 @@
                                 @endif
                             </div>
                         </div>
+                        @endif
 
                         <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                             <label for="country" class="col-md-4 control-label">Country</label>
@@ -134,7 +139,7 @@
                             </div>
                         </div>
 
-
+                        @if( isset($add_team_member) == false )
                         <div class="alert alert-info">
                           <strong>Note:</strong> 
                           <p>
@@ -142,12 +147,13 @@
                           <a style="text-decoration: underline;" href="{{url('subscription-pricing')}}">Click here</a> for Subscription Pricing.
                           </p>
                         </div>
+                        @endif
 
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    {{ isset($add_team_member) ? 'Add Team Member' : 'Register' }}
                                 </button>
                             </div>
                         </div>

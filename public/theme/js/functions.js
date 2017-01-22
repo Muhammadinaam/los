@@ -32,21 +32,7 @@ jQuery(function($) {'use strict';
   
   
   
-   // Windown on scroll to show social icons
-    var logo = $(".wrap-sticky a.navbar-brand");
-    var menu = $(".wrap-sticky .attr-nav");
-    $(".wrap-sticky a.navbar-brand").hide();
-	$('.wrap-sticky .attr-nav').hide();
-	 $(window).scroll(function(){
-		if($(window).scrollTop() >= 100 ){
-		  logo.show();
-		  menu.show();
-		} 
-		else {
-		 logo.hide();
-		  menu.hide();
-	  }
-   });
+   
 	$(window).on("scroll", function(){  
 		 var width = $(window).width();
 		  if(width < 993){

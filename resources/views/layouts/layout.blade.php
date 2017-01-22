@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<title>BuildingX</title>
+<title>LeadsOnSite</title>
 <link rel="stylesheet" type="text/css" href="{{asset('public/theme/css/bootstrap.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('public/theme/css/font-awesome.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('public/theme/css/building-icons.css')}}">
@@ -40,7 +40,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-sm-6">
-        <p>Contractors & Construction Managers Since 1991.</p>
+        <p>Updated list of projects and their updates</p>
       </div>
       <div class="col-md-6 col-sm-6">
         <ul class="social_top">
@@ -63,8 +63,8 @@
       <div class="col-md-12 clearfix">
         <a class="navbar-brand" href="index.html"><img src="{{asset('public/theme/images/logo.png')}}" alt="logo" class="img-responsive"></a>
         <ul class="company_info">
-          <li><i class="icon-phone8"></i><strong>1-333-444-4567</strong>info@construction.com</li>
-          <li><i class="icon-location"></i><strong>Golden Age Street,</strong>England London, U.K., E14LS</li>
+          <li><i class="icon-phone8"></i><strong>(971) 333-444-4567</strong>info@leadsonsite.com</li>
+          <li><i class="icon-location"></i><strong>Union,</strong>Dubai, United Arab Emirates</li>
           <li><i class="icon-clock5"></i><strong>Mon - Sat 8.00 - 18.00</strong>Sunday Closed</li>
         </ul>
       </div>
@@ -105,7 +105,6 @@
           <li><a href="{{url('guest/projects')}}">Projects</a></li>
           @endif
 
-          <li><a href="{{url('news')}}">News</a></li>
           <li><a href="{{url('contact-us')}}">Contact Us</a></li>
           @if(!Auth::check())
           <li><a href="{{url('login')}}">Login</a></li>
@@ -116,7 +115,7 @@
             <ul class="dropdown-menu">
               
               @if(Auth::user()->company_owner = '1')
-              <li><a href="{{url('users')}}">Users</a></li>
+              <li><a href="{{url('team-members')}}">Team Members</a></li>
               <li><a href="{{url('billing')}}">Billing</a></li>
               @endif
 
@@ -142,8 +141,8 @@
     <div class="row">
       <div class="col-md-4 col-sm-4 footer_panel half_space">
         <h3 class="heading half_space">About Us<span class="divider-left"></span></h3>
-        <a href="index.html" class="footer_logo half_space"><img src="{{asset('public/theme/images/logo-footer.png')}}" alt="Building X"></a>
-        <p>We offer the most complete house renovating services in the country, from kitchen design to bathroom remodeling.</p>
+        <a href="index.html" class="footer_logo half_space"><img src="{{asset('public/theme/images/logo-footer.png')}}" alt="Logo"></a>
+        <p>We track construction projects in UAE</p>
         <ul class="social_icon heading_top">
           <li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
           <li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
@@ -155,23 +154,18 @@
       <div class="col-md-4 col-sm-4 footer_panel half_space">
         <h3 class="heading half_space">Quick Links<span class="divider-left"></span></h3>
         <ul class="links">
-          <li><a href="#."><i class="icon-chevron-small-right"></i>Home</a></li>
-          <li><a href="#."><i class="icon-chevron-small-right"></i>Company</a></li>
-          <li><a href="#."><i class="icon-chevron-small-right"></i>Services</a></li>
-          <li><a href="#."><i class="icon-chevron-small-right"></i>Our Team</a></li>
-          <li><a href="#."><i class="icon-chevron-small-right"></i>Company History</a></li>
-          <li><a href="#."><i class="icon-chevron-small-right"></i>Certifications</a></li>
-          <li><a href="#."><i class="icon-chevron-small-right"></i>Blog</a></li>
-          <li><a href="#."><i class="icon-chevron-small-right"></i>Shop</a></li>
-          <li><a href="#."><i class="icon-chevron-small-right"></i>Privacy Policy</a></li>
-          <li><a href="#."><i class="icon-chevron-small-right"></i>Contact Us</a></li>
+          <li><a href="{{url('/')}}"><i class="icon-chevron-small-right"></i>Home</a></li>
+          <li><a href="{{url('register')}}"><i class="icon-chevron-small-right"></i>Create Account</a></li>
+          <li><a href="{{url('contact-us')}}"><i class="icon-chevron-small-right"></i>Contact Us</a></li>
+          <li><a href="{{url('login')}}"><i class="icon-chevron-small-right"></i>Login</a></li>
+          <li><a href="{{url('guest/projects')}}"><i class="icon-chevron-small-right"></i>Projects</a></li>
         </ul>
       </div>
       <div class="col-md-4 col-sm-4 footer_panel half_space">
         <h3 class="heading half_space">Keep in Touch <span class="divider-left"></span></h3>
-        <p class=" address"><i class="icon-map-pin"></i>198 West 21th Street Victoria 8007, Australia</p>
-        <p class=" address"><i class="icon-phone"></i>(654) 332-112-222</p>
-        <p class=" address"><i class="icon-mail"></i><a href="mailto:buildingx@info.com">buildingx@info.com</a></p>
+        <p class=" address"><i class="icon-map-pin"></i>Union, Dubai United Arab Emirates</p>
+        <p class=" address"><i class="icon-phone"></i>(971) 111-112-222</p>
+        <p class=" address"><i class="icon-mail"></i><a href="mailto:info@leadsonsite.com">info@leadsonsite.com</a></p>
         <img src="{{asset('public/theme/images/footer-map.png')}}" alt="we are here" class="img-responsive">
       </div>
     </div>
@@ -181,7 +175,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
-        <p>Copyright &copy; 2016 <a href="#.">BuildingX</a>. all rights reserved.</p>
+        <p>Copyright &copy; 2017 <a href="{{url('/')}}">Leads On Site</a>. all rights reserved.</p>
       </div>
     </div>
   </div>
@@ -209,6 +203,49 @@
 <script src="{{asset('public/theme/js/revolution.extension.slideanims.min.js')}}"></script>
 <script src="{{asset('public/theme/js/revolution.extension.video.min.js')}}"></script>
 <script src="{{asset('public/theme/js/functions.js')}}"></script>
+
+<script type="text/javascript">
+  
+  $(document).ready(function(){
+
+
+        
+
+
+        // Windown on scroll to show social icons
+        var logo = $(".wrap-sticky a.navbar-brand");
+        var menu = $(".wrap-sticky .attr-nav");
+        logo.hide();
+        menu.hide();
+
+        @if(!Auth::check())
+          var menuEffectHeight = 100;
+        @else
+          var menuEffectHeight = 30;
+          logo.show();
+        @endif
+
+
+        
+         $(window).scroll(function(){
+            if($(window).scrollTop() >= menuEffectHeight ){
+              logo.show();
+              menu.show();
+            } 
+            else {
+
+              @if(!Auth::check())
+             logo.hide();
+             @endif
+
+              menu.hide();
+          }
+       });
+    });
+  
+
+</script>
+
 
 
 @yield('scripts')

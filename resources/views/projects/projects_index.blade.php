@@ -175,25 +175,25 @@ th
                       <div class="col-md-12">
                       <div class="checkbox">
                         <label for="show_by_tags-0">
-                          <input type="checkbox" id="actioned" value="actioned" checked>
+                          <input type="checkbox" id="actioned" value="actioned">
                           Actioned
                         </label>
                       </div>
                       <div class="checkbox">
                         <label for="show_by_tags-1">
-                          <input type="checkbox" id="to_action_now" value="to_action_now" checked>
+                          <input type="checkbox" id="to_action_now" value="to_action_now">
                           To Action Now
                         </label>
                       </div>
                       <div class="checkbox">
                         <label for="show_by_tags-2">
-                          <input type="checkbox" id="to_action_later" value="to_action_later" checked>
+                          <input type="checkbox" id="to_action_later" value="to_action_later">
                           To Action Later
                         </label>
                       </div>
                       <div class="checkbox">
                         <label for="show_by_tags-3">
-                          <input type="checkbox" id="not_relevant" value="not_relevant" checked>
+                          <input type="checkbox" id="not_relevant" value="not_relevant">
                           Not Relevant
                         </label>
                       </div>
@@ -238,7 +238,7 @@ th
 
 
 
-          <table id="projects-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+          <table id="projects-table" class="table table-bordered" cellspacing="0" width="100%">
             <thead>
               <tr>
                 <th></th>

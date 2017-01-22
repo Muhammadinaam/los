@@ -66,6 +66,13 @@ Route::group(['middleware' => ['company_owner']], function(){
 
 	Route::get('swap-plan', 'BillingController@swapPlan');
 
+	Route::get('team-members', 'UsersController@teamMembersList');
+
+	Route::get('add-team-member', 'UsersController@addTeamMemberForm');
+	Route::post('add-team-member', 'UsersController@addTeamMember');
+
+	Route::post('delete-team-member', 'UsersController@deleteTeamMember');
+
 });
 
 Route::get('subscription-pricing', function(){

@@ -36,7 +36,7 @@ class ProjectsController extends Controller
         $query = DB::table('projects')
                         ->leftJoin('projecttags', function($join){
                             $join->on('projects.id', '=', 'projecttags.project_id')
-                            ->where('projecttags.user_id', '=', Auth::user()->id);
+                            ->where('projecttags.user_id', '=', Auth::user()->id );
                         })
                         ->leftJoin('favouriteprojects', function($join){
                             $join->on('projects.id', '=', 'favouriteprojects.project_id')

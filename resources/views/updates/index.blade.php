@@ -51,7 +51,7 @@ th
 
 
 
-          <table id="updates-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+          <table id="updates-table" class="table table-bordered" cellspacing="0" width="100%">
             <thead>
               <tr>
                 <th>Project</th>

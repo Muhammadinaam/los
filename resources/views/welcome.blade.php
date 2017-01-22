@@ -22,7 +22,7 @@
         data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" 
         data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" 
         data-mask_out="x:0;y:0;s:inherit;e:inherit;"                             
-        data-start="800">Construction Management
+        data-start="800">Leads on Site
         </h1>
         <div class="tp-caption  tp-resizeme"                            
         data-x="center"
@@ -33,7 +33,8 @@
         data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" 
         data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" 
         data-mask_out="x:0;y:0;s:inherit;e:inherit;"                             
-        data-start="800"><p>We offer the most complete house renovating services in the country, from kitchen<br>design to bathroom remodeling.</p>
+        data-start="800">
+            <p>We have updated list of Projects</p>
         </div>
         
         <div class="tp-caption  tp-resizeme"                            
@@ -46,8 +47,8 @@
         data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" 
         data-mask_out="x:0;y:0;s:inherit;e:inherit;"                             
         data-start="800">
-        <a href="#." class="btn-light border-radius button-black">our services</a>
-        <a href="#." class="border-radius btn-dark button-black">Get a quote</a>
+        <a href="{{url('guest/projects')}}" class="btn-light border-radius button-black">Projects</a>
+        <a href="{{url('updates')}}" class="border-radius btn-dark button-black">Updates</a>
         </div>
       </li>
 
@@ -62,7 +63,7 @@
         data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" 
         data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" 
         data-mask_out="x:0;y:0;s:inherit;e:inherit;"                             
-        data-start="800">Construction Management
+        data-start="800">Leads on Site
         </h1>
         <div class="tp-caption  tp-resizeme"                            
         data-x="center"
@@ -73,7 +74,7 @@
         data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" 
         data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" 
         data-mask_out="x:0;y:0;s:inherit;e:inherit;"                             
-        data-start="800"><p>We offer the most complete house renovating services in the country, from kitchen<br>design to bathroom remodeling.</p>
+        data-start="800"><p>We have updated list of Projects</span>
         </div>
         <div class="tp-caption  tp-resizeme"                            
         data-x="center"
@@ -169,146 +170,6 @@
   </div>
 </section>
 
-<!--Feature Work-->
-<section id="features" class="padding parallax">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h2 class="heading heading_space">Featured Works<span class="divider-center"></span></h2>
-                <div class="work-filter half_space">
-                    <ul class="text-center">
-                        <li><a href="javascript:;" data-filter="all" class="active filter">Filter - All</a></li>
-                        <li><a href="javascript:;" data-filter=".technolog" class="filter">Plumbing</a></li>
-                        <li><a href="javascript:;" data-filter=".facilities" class="filter">Green Building</a></li>
-                        <li><a href="javascript:;" data-filter=".kids" class="filter">Interior Design</a></li>
-                        <li><a href="javascript:;" data-filter=".dental" class="filter">Tiling</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="zerogrid gallery">
-                <div class="wrap-container">
-                    <div class="wrap-content clearfix">
-                        <div class="col-1-4 mix work-item facilities">
-                            <div class="item-container">
-                                <div class="image">
-                                    <img src="{{asset('public/theme/images/work1.jpg')}}" class="border-radius" alt="work" />
-                                    <div class="overlay border-radius">
-                                        <div class="overlay-inner">
-                                            <a class="fancybox border-radius" href="images/work1.jpg" data-fancybox-group="work"><i class="icon-plus3"></i></a>
-                                            <h4>Langham Hotel</h4>
-                                            <p>Renean sit amet massa </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1-4 mix work-item technolog">
-                            <div class="item-container">
-                                <div class="image">
-                                    <img src="{{asset('public/theme/images/work2.jpg')}}" class="border-radius" alt="work" />
-                                    <div class="overlay border-radius">
-                                        <div class="overlay-inner">
-                                            <a class="fancybox border-radius" href="images/work1.jpg" data-fancybox-group="work"><i class="icon-plus3"></i></a>
-                                            <h4>Langham Hotel</h4>
-                                            <p>Renean sit amet massa </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1-4 mix work-item kids">
-                            <div class="item-container">
-                                <div class="image">
-                                    <img src="{{asset('public/theme/images/work3.jpg')}}" class="border-radius" alt="work" />
-                                    <div class="overlay border-radius">
-                                        <div class="overlay-inner">
-                                            <a class="fancybox border-radius" href="images/work1.jpg" data-fancybox-group="work"><i class="icon-plus3"></i></a>
-                                            <h4>Langham Hotel</h4>
-                                            <p>Renean sit amet massa </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1-4 mix work-item facilities">
-                            <div class="item-container">
-                                <div class="image">
-                                    <img src="{{asset('public/theme/images/work4.jpg')}}" class="border-radius" alt="work" />
-                                    <div class="overlay border-radius">
-                                        <div class="overlay-inner">
-                                            <a class="fancybox border-radius" href="images/work1.jpg" data-fancybox-group="work"><i class="icon-plus3"></i></a>
-                                            <h4>Langham Hotel</h4>
-                                            <p>Renean sit amet massa </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1-4 mix work-item kids">
-                            <div class="item-container">
-                                <div class="image">
-                                    <img src="{{asset('public/theme/images/work5.jpg')}}" class="border-radius" alt="work" />
-                                    <div class="overlay border-radius">
-                                        <div class="overlay-inner">
-                                            <a class="fancybox border-radius" href="images/work1.jpg" data-fancybox-group="work"><i class="icon-plus3"></i></a>
-                                            <h4>Langham Hotel</h4>
-                                            <p>Renean sit amet massa </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1-4 mix work-item dental">
-                            <div class="item-container">
-                                <div class="image">
-                                    <img src="{{asset('public/theme/images/work6.jpg')}}" class="border-radius" alt="work" />
-                                    <div class="overlay border-radius">
-                                        <div class="overlay-inner">
-                                            <a class="fancybox border-radius" href="images/work1.jpg" data-fancybox-group="work"><i class="icon-plus3"></i></a>
-                                            <h4>Langham Hotel</h4>
-                                            <p>Renean sit amet massa </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1-4 mix work-item technolog">
-                            <div class="item-container">
-                                <div class="image">
-                                    <img src="{{asset('public/theme/images/work7.jpg')}}" class="border-radius" alt="work" />
-                                    <div class="overlay border-radius">
-                                        <div class="overlay-inner">
-                                            <a class="fancybox border-radius" href="images/work1.jpg" data-fancybox-group="work"><i class="icon-plus3"></i></a>
-                                            <h4>Langham Hotel</h4>
-                                            <p>Renean sit amet massa </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-1-4 mix work-item technolog">
-                            <div class="item-container">
-                                <div class="image">
-                                    <img src="{{asset('public/theme/images/work8.jpg')}}" class="border-radius" alt="work" />
-                                    <div class="overlay border-radius">
-                                        <div class="overlay-inner">
-                                            <a class="fancybox border-radius" href="images/work1.jpg" data-fancybox-group="work"><i class="icon-plus3"></i></a>
-                                            <h4>Langham Hotel</h4>
-                                            <p>Renean sit amet massa </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 
 
 <!--Fun Facts-->
@@ -326,12 +187,12 @@
         <i class="icon-checkmark3"></i>
         <strong data-to="1235">0</strong>
         <!-- Set Your Number here. i,e. data-to="56" -->
-        <p>Project Completed</p>
+        <p>Projects</p>
         </div>
         <div class="counters-item last">
         <i class="icon-trophy"></i>
         <strong data-to="78">0</strong>
-        <p>Awards Won</p>
+        <p>Updates</p>
         </div>
       </div>
       <div class="col-md-7 col-sm-4">
@@ -343,7 +204,7 @@
        <div class="counters-item">
         <i class=" icon-icons20"></i>
         <strong data-to="186">0</strong>
-        <p>Hours of Work / Month</p>
+        <p>$ Million of projects </p>
         </div>
         <div class="counters-item last">
         <i class="icon-happy"></i>
@@ -355,86 +216,45 @@
   </div>
 </section>
 
+<?php
+    $recentProjects = \App\Project::latest()->limit(5)->get();
+?>
 
 
-<!--What WE Do-->
+@if( count($recentProjects) > 0 )
 <section id="wedo" class="padding bg_grey">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-       <h2 class="heading heading_space">What We Do <span class="divider-left"></span></h2>
+       <h2 class="heading heading_space">Recent Projects <span class="divider-left"></span></h2>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <div class="slider_wrapper">
           <div id="do-slider" class="owl-carousel">
+            
+            @foreach($recentProjects as $recentProject)
             <div class="item">
               <div class="content_wrap">
                 <div class="image">
-                  <img src="{{asset('public/theme/images/do1.jpg')}}" alt="Construction" class="img-responsive border-radius">
+                  <img src="{{ Voyager::image($recentProject->image) }}" alt="Project_Image" class="img-responsive border-radius" style="width:357px;">
                 </div>
-                <h3><a href="blog_detail.html">General Contracting</a></h3>
-                <p>We offer the most complete house renovating services in the country, from kitchen design to bathroom remodeling.</p> 
-                <a href="blog_detail.html" class="btn-light border-radius button-hover">service detail</a>
+                <h3><a href="blog_detail.html">{{$recentProject->title}}</a></h3>
+                <!-- <p>We offer the most complete house renovating services in the country, from kitchen design to bathroom remodeling.</p>  -->
+                <a href="{{url('project/'.$recentProject->id)}}" class="btn-light border-radius button-hover">Project Details</a>
               </div>
             </div>
-            <div class="item">
-              <div class="content_wrap">
-                <div class="image">
-                  <img src="{{asset('public/theme/images/do2.jpg')}}" alt="Construction" class="img-responsive border-radius">
-                </div>
-                <h3><a href="blog_detail.html">General Contracting</a></h3>
-                <p>We offer the most complete house renovating services in the country, from kitchen design to bathroom remodeling.</p> 
-                <a href="blog_detail.html" class="btn-light border-radius button-hover">service detail</a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content_wrap">
-                <div class="image">
-                  <img src="{{asset('public/theme/images/do3.jpg')}}" alt="Construction" class="img-responsive border-radius">
-                </div>
-                <h3><a href="blog_detail.html">General Contracting</a></h3>
-                <p>We offer the most complete house renovating services in the country, from kitchen design to bathroom remodeling.</p> 
-                <a href="blog_detail.html" class="btn-light border-radius button-hover">service detail</a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content_wrap">
-                <div class="image">
-                  <img src="{{asset('public/theme/images/do1.jpg')}}" alt="Construction" class="img-responsive border-radius">
-                </div>
-                <h3><a href="blog_detail.html">General Contracting</a></h3>
-                <p>We offer the most complete house renovating services in the country, from kitchen design to bathroom remodeling.</p> 
-                <a href="blog_detail.html" class="btn-light border-radius button-hover">service detail</a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content_wrap">
-                <div class="image">
-                  <img src="{{asset('public/theme/images/do2.jpg')}}" alt="Construction" class="img-responsive border-radius">
-                </div>
-                <h3><a href="blog_detail.html">General Contracting</a></h3>
-                <p>We offer the most complete house renovating services in the country, from kitchen design to bathroom remodeling.</p> 
-                <a href="blog_detail.html" class="btn-light border-radius button-hover">service detail</a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content_wrap">
-                <div class="image">
-                  <img src="{{asset('public/theme/images/do3.jpg')}}" alt="Construction" class="img-responsive border-radius">
-                </div>
-                <h3><a href="blog_detail.html">General Contracting</a></h3>
-                <p>We offer the most complete house renovating services in the country, from kitchen design to bathroom remodeling.</p> 
-                <a href="blog_detail.html" class="btn-light border-radius button-hover">service detail</a>
-              </div>
-            </div>
+            @endforeach
+            
+
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+@endif
 
 <!--Customers Review-->
 <section id="reviews" class="padding">
@@ -472,128 +292,27 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
-       <h2>Contractors & Construction Managers Since</h2>
-       <h1>2003</h1>
-       <a href="#." class="border-radius button-hover">Gaet a Quote</a>
+       
+       <h1>50</h1>
+       <h2>Projects added last week</h2>
+       <br><br>
+       <a href="{{url('projects')}}" class="border-radius button-hover">Projects</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- News-->
-<section id="news" class="padding">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-       <h2 class="heading heading_space">Company News <span class="divider-left"></span></h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="slider_wrapper">
-          <div id="news-slider" class="owl-carousel">
-            <div class="item">
-              <div class="content_wrap">
-                <div class="image">
-                  <img src="{{asset('public/theme/images/news1.jpg')}}" alt="Construction" class="img-responsive border-radius">
-                </div>
-                <div class="news_box border-radius">
-                  <h4><a href="blog_detail.html">4 Springtime Color Schemes to Try at Home</a></h4>
-                  <ul class="commment">
-                    <li><a href="#."><i class="icon-icons20"></i>June 6, 2016</a></li>
-                    <li><a href="#."><i class="icon-comment"></i> 02</a></li>
-                  </ul>
-                  <p>We offer the most complete house Services in the country...</p>
-                  <a href="blog_detail.html" class="readmore">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content_wrap">
-                <div class="image">
-                  <img src="{{asset('public/theme/images/news2.jpg')}}" alt="Construction" class="img-responsive border-radius">
-                </div>
-                <div class="news_box border-radius">
-                  <h4><a href="blog_detail.html"> Springtime Color Schemes to Try at Home</a></h4>
-                  <ul class="commment">
-                    <li><a href="#."><i class="icon-icons20"></i>June 6, 2016</a></li>
-                    <li><a href="#."><i class="icon-comment"></i> 02</a></li>
-                  </ul>
-                  <p>We offer the most complete house Services in the country...</p>
-                  <a href="blog_detail.html" class="readmore">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content_wrap">
-                <div class="image">
-                  <img src="{{asset('public/theme/images/news3.jpg')}}" alt="Construction" class="img-responsive border-radius">
-                </div>
-                <div class="news_box border-radius">
-                  <h4><a href="blog_detail.html">4 Springtime Color Schemes to Try at Home</a></h4>
-                  <ul class="commment">
-                    <li><a href="#."><i class="icon-icons20"></i>June 6, 2016</a></li>
-                    <li><a href="#."><i class="icon-comment"></i> 02</a></li>
-                  </ul>
-                  <p>We offer the most complete house Services in the country...</p>
-                  <a href="blog_detail.html" class="readmore">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content_wrap">
-                <div class="image">
-                  <img src="{{asset('public/theme/images/news1.jpg')}}" alt="Construction" class="img-responsive border-radius">
-                </div>
-                <div class="news_box border-radius">
-                  <h4><a href="blog_detail.html">4 Springtime Color Schemes to Try at Home</a></h4>
-                  <ul class="commment">
-                    <li><a href="#."><i class="icon-icons20"></i>June 6, 2016</a></li>
-                    <li><a href="#."><i class="icon-comment"></i> 02</a></li>
-                  </ul>
-                  <p>We offer the most complete house Services in the country...</p>
-                  <a href="blog_detail.html" class="readmore">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content_wrap">
-                <div class="image">
-                  <img src="{{asset('public/theme/images/news2.jpg')}}" alt="Construction" class="img-responsive border-radius">
-                </div>
-                <div class="news_box border-radius">
-                  <h4><a href="blog_detail.html">4 Springtime Color Schemes to Try at Home</a></h4>
-                  <ul class="commment">
-                    <li><a href="#."><i class="icon-icons20"></i>June 6, 2016</a></li>
-                    <li><a href="#."><i class="icon-comment"></i> 02</a></li>
-                  </ul>
-                  <p>We offer the most complete house Services in the country...</p>
-                  <a href="blog_detail.html" class="readmore">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content_wrap">
-                <div class="image">
-                  <img src="{{asset('public/theme/images/news3.jpg')}}" alt="Construction" class="img-responsive border-radius">
-                </div>
-                <div class="news_box border-radius">
-                  <h4><a href="blog_detail.html">4 Springtime Color Schemes to Try at Home</a></h4>
-                  <ul class="commment">
-                    <li><a href="#."><i class="icon-icons20"></i>June 6, 2016</a></li>
-                    <li><a href="#."><i class="icon-comment"></i> 02</a></li>
-                  </ul>
-                  <p>We offer the most complete house Services in the country...</p>
-                  <a href="blog_detail.html" class="readmore">Read More</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
+
+
+@endsection
+
+@section('scripts')
+
+<script type="text/javascript">
+    
+
+
+</script>
 
 @endsection
