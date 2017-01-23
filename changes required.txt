@@ -1,0 +1,6 @@
+- Text size on mobile
+- Area
+- Atlas
+- Terms and Condition
+- Hide empty info
+- Ad
