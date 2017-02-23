@@ -55,6 +55,27 @@ class UpdatesController extends Controller
         return view( 'updates.index' );
     }
 
+    public function index_api()
+    {
+        $data = json_decode( $request->getContent(), true ) ;
+
+        $user = \App\User::find( $data['user_id'] );
+
+        $isActive = $user->isActive();
+
+        if($isActive['is_user_active'] == 'false')
+        {
+            return $isActive;
+        }
+
+        $result = DB::table('updates')
+                        ->join('projects', 'updates.project_id', '=', 'projects.id' )
+                        ->orderBy('updates.date', 'desc')
+                        ->select('updates.id', 'updates.date', 'updates.description', 'updates.image1', 'updates.image2', 'updates.image3', 'projects.title' )->paginate(20);
+
+        return array( 'success' => 'true', 'info' => $result );
+    }
+
     public function datatableNonAdmin()
     {
         

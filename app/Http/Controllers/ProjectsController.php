@@ -13,6 +13,51 @@ class ProjectsController extends Controller
 {
     //
 
+    public function guest_projects_api()
+    {
+        $result = DB::table('projects')
+                        ->select('projects.title', 'projects.industry', 'projects.type', 'projects.country', 'projects.city', 'projects.address')
+                        ->paginate(20);
+
+        return array( 'success' => 'true', 'info' => $result );
+    }
+
+
+    public function projects_api(Request $request)
+    {
+
+        $data = json_decode( $request->getContent(), true ) ;
+
+        $user = \App\User::find( $data['user_id'] );
+
+        $isActive = $user->isActive();
+
+        if($isActive['is_user_active'] == 'false')
+        {
+            return $isActive;
+        }
+
+        $result = DB::table('projects')
+                        ->select(DB::raw('projects.*, if( favouriteprojects.user_id is null, 0, 1) as isfavourite '))
+                        ->leftJoin('projecttags', function($join)use($data){
+                            $join->on('projects.id', '=', 'projecttags.project_id')
+                            ->where('projecttags.user_id', '=', $data['user_id'] );
+                        })
+                        ->leftJoin('favouriteprojects', function($join)use($data){
+                            $join->on('projects.id', '=', 'favouriteprojects.project_id')
+                            ->where('favouriteprojects.user_id', '=', $data['user_id']);
+                        })
+                        ->leftJoin('projectnotes', function($join)use($data){
+                            $join->on('projects.id', '=', 'projectnotes.project_id')
+                            ->where('projectnotes.user_id', '=', $data['user_id']);
+                        })->paginate(20);
+
+        return array( 'success' => 'true', 'info' => $result );
+    }
+
+
+
+
 	public function guest_index()
 	{
     	return view('projects.guest_projects_index');
@@ -137,6 +182,40 @@ class ProjectsController extends Controller
         return back();   
     }
 
+    public function addTag_api(Request $request)
+    {
+        
+        $data = json_decode( $request->getContent(), true ) ;
+
+        $user = \App\User::find( $data['user_id'] );
+
+        $isActive = $user->isActive();
+
+        if($isActive['is_user_active'] == 'false')
+        {
+            return $isActive;
+        }
+
+
+        $tag = $data['tag'];
+        $projectIDs = $data['projects'];
+
+        foreach ($projectIDs as $key => $projectID) {
+
+            DB::table('projecttags')
+                ->where('user_id', $data['user_id'] )
+                ->where('project_id', $projectID)
+                ->delete();
+            
+            DB::table('projecttags')->insert([
+                    ['user_id' => $data['user_id'], 'project_id' => $projectID, 'tag' => $tag]
+                ]);
+        }
+        
+     
+        return array( 'success' => 'true' );
+    }
+
     public function addNote(Request $request)
     {
         if($request->has('projects') )
@@ -164,6 +243,43 @@ class ProjectsController extends Controller
         return back();  
     }
 
+    public function addNote_api(Request $request)
+    {
+
+        $data = json_decode( $request->getContent(), true ) ;
+
+        $user = \App\User::find( $data['user_id'] );
+
+        $isActive = $user->isActive();
+
+        if($isActive['is_user_active'] == 'false')
+        {
+            return $isActive;
+        }
+        
+        $note = $data['note'];
+        $projectIDs = $data['projects'];
+        $shared = is_numeric($data['shared_with_team']) ? $data['shared_with_team'] : 0;
+
+        foreach ($projectIDs as $key => $projectID) {
+
+            DB::table('projectnotes')
+                ->where('user_id', $data['user_id'])
+                ->where('project_id', $projectID)
+                ->delete();
+            
+            if($note != '')
+            {
+                DB::table('projectnotes')->insert([
+                        ['user_id' => $data['user_id'], 'project_id' => $projectID, 'note' => $note, 'shared_with_team' => $shared]
+                    ]);
+            }
+        }
+        
+     
+        return array( 'success' => 'true' );
+    }
+
     public function markFavourite(Request $request)
     {
         if($request->has('projects') )
@@ -186,8 +302,47 @@ class ProjectsController extends Controller
         return back();  
     }
 
+    public function markFavourite_api(Request $request)
+    {
+
+        $data = json_decode( $request->getContent(), true ) ;
+
+        $user = \App\User::find( $data['user_id'] );
+
+        $isActive = $user->isActive();
+
+        if($isActive['is_user_active'] == 'false')
+        {
+            return $isActive;
+        }
+        
+        
+        $projectIDs = $data['projects'];
+
+        foreach ($projectIDs as $key => $projectID) {
+
+            DB::table('favouriteprojects')
+                ->where('user_id', $data['user_id'])
+                ->where('project_id', $projectID)
+                ->delete();
+            
+            DB::table('favouriteprojects')->insert([
+                    ['user_id' => $data['user_id'], 'project_id' => $projectID]
+                ]);
+        }
+        
+     
+        return array( 'success' => 'true' );
+    }
+
+    
+
     public function removeFavourite(Request $request)
     {
+        
+
+        
+
         if($request->has('projects') )
         {
             $projectIDs = $request->input('projects');
@@ -201,10 +356,64 @@ class ProjectsController extends Controller
             }
         }
      
-        return back();  
+        return back();
+    }
+
+    public function removeFavourite_api(Request $request)
+    {
+        $data = json_decode( $request->getContent(), true ) ;
+
+        $user = \App\User::find( $data['user_id'] );
+
+        $isActive = $user->isActive();
+
+        if($isActive['is_user_active'] == 'false')
+        {
+            return $isActive;
+        }
+        
+        
+        $projectIDs = $data['projects'];
+
+        
+        
+
+        foreach ($projectIDs as $key => $projectID) {
+
+            DB::table('favouriteprojects')
+                ->where('user_id', $data['user_id'])
+                ->where('project_id', $projectID)
+                ->delete();
+        }
+        
+     
+        return array( 'success' => 'true' );
     }
 
     public function show($id)
+    {
+        
+
+        return view('projects.show', show_project($id) );
+    }
+
+    public function show_api()
+    {
+        $data = json_decode( $request->getContent(), true ) ;
+
+        $user = \App\User::find( $data['user_id'] );
+
+        $isActive = $user->isActive();
+
+        if($isActive['is_user_active'] == 'false')
+        {
+            return $isActive;
+        }
+
+        return array ( 'success' => 'true', 'info' => show_project($data['project_id']) );
+    }
+
+    public function show_project($id)
     {
         $project = Project::find($id);
 
@@ -244,6 +453,6 @@ class ProjectsController extends Controller
                         ['user_id' => Auth::user()->id, 'project_id' => $project->id ]
                     ]);
 
-        return view('projects.show', compact('project', 'isFav', 'tag', 'note') );
+        return compact('project', 'isFav', 'tag', 'note');
     }
 }

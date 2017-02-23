@@ -26,6 +26,36 @@ Route::get('logout', function(){
 
 });
 
+
+
+//web services routes
+
+Route::group( ['prefix' => 'api'], function(){
+
+	Route::post( 'appLogin', 'UsersController@appLogin' );
+	Route::post( 'appSignup', 'UsersController@appSignup' );
+
+
+	Route::get('guest/projects', 'ProjectsController@guest_projects_api' );
+
+	Route::post('projects', 'ProjectsController@projects_api');
+
+	Route::post('add-tag', 'ProjectsController@addTag_api');
+	Route::post('add-note', 'ProjectsController@addNote_api');
+	Route::post('mark-favourite', 'ProjectsController@markFavourite_api');
+	Route::post('remove-favourite', 'ProjectsController@removeFavourite_api');
+	Route::get('project/{id}', 'ProjectsController@show_api');
+
+
+	Route::get('project-updates', 'UpdatesController@index_api');
+
+
+} );
+
+
+//web services routes
+
+
 Route::get('guest/projects', 'ProjectsController@guest_index');
 Route::get('guest/projects-datatable', 'ProjectsController@guest_index_datatable');
 Route::get('contact-us', 'ContactusController@index');

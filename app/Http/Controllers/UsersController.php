@@ -113,4 +113,63 @@ class UsersController extends Controller
         
     }
 
+    public function appLogin(Request $request){
+        
+        $content = $request->getContent();
+        $json = json_decode($content, true);
+        $result=DB::table('users')
+                ->where('email', $json['email'])
+                ->first();
+                
+        if ($result!=null && Hash::check($json['password'], $result->password)){ 
+            //return Response::json(array('success'=>"true",'data'=>$result));
+            unset($result->password);
+            $result->success=true;
+            return Response::json($result);
+        }
+        return Response::json(array('success'=>"false"));
+    }
+
+
+    public function appSignup(Request $request){
+        $validator = Validator::make($request->all(), [
+        'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
+            'company_name' => 'required|unique:users',
+            'country' => 'required',
+            'city' => 'required',
+            'telephone' => 'required',
+            'mobile' => 'required',
+        ]);
+        if ($validator->fails()) {    
+            $error=$validator->messages();
+            return response()->json( array( 'success' => 'false' , 'errors' => $error ), 422);
+        }
+        
+        $content = $request->getContent();
+        $data = json_decode($content, true);
+    
+
+        $newUser = User::create([
+                        'name' => $data['name'],
+                        'email' => $data['email'],
+                        'password' => bcrypt($data['password']),
+                        'company_name' => $data['company_name'],
+                        'country' => $data['country'],
+                        'city' => $data['city'],
+                        'telephone' => $data['telephone'],
+                        'mobile' => $data['mobile'],
+                        'trial_ends_at' => Carbon::now()->addDays(config('app.trial_period_days')),
+                        'company_owner' => '1',
+                        'activated' => '1',
+                    ]);
+                    // date("Y-m-d H:i:s");
+        if(!$newUser){
+            return Response::json(array('success'=>"false"));
+        } else {
+            return Response::json(array('success'=>"true",'id'=>$newUser->id));
+        }
+    }
+
 }

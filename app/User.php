@@ -52,4 +52,55 @@ class User extends Authenticatable
         return $user;
     }
 
+
+
+
+
+    public function isActive()
+    {
+
+        $active = array( 'success' => 'true', 'is_user_active' => 'true' );
+
+        //Check for admin users
+        $user = \TCG\Voyager\Models\User::find($this->id);
+
+        if($user == null)
+            return array( 'success' => 'false', 'is_user_active' => 'false', 'reason' => 'User does not exists' );
+
+        $is_admin_user = $user->hasPermission(
+                config('voyager.user.admin_role', 'browse_admin')
+            );
+
+        if($is_admin_user)
+        {
+
+            if($user->activated == '1')
+                return $active;
+            else
+                return array( 'success' => 'false', 'is_user_active' => 'false', 'reason' => $user->not_activated_reason );
+        }
+        else        
+        //end check for admin users
+        {
+
+            
+
+            if($this->activated == '0')
+                return array( 'success' => 'false', 'is_user_active' => 'false', 'reason' => $user->not_activated_reason );
+
+            if( $this->parent_user()->subscribed('main') == false && 
+                $this->parent_user()->onTrial() == false )
+            {
+                if( $this->company_owner == '1' )
+                    return array( 'success' => 'false', 'is_user_active' => 'false', 'reason' => 'Subscription expired, Please go to Billing Section' );
+                else
+                    return array( 'success' => 'false', 'is_user_active' => 'false', 'reason' => 'Subscription expired' );
+            }
+            
+        }
+
+
+        return $active;
+    }
+
 }
