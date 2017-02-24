@@ -9,6 +9,9 @@ use DB;
 use Voyager;
 use Auth;
 use Response;
+use Validator;
+use Carbon\Carbon;
+use Hash;
 
 class UsersController extends Controller
 {
