@@ -16,7 +16,7 @@ class DashboardController extends Controller
     	return view('dashboard', $this->dashboard_data(Auth::user()->id) );
     }
 
-    public function index_api()
+    public function index_api(Request $request)
     {
     	$data = json_decode( $request->getContent(), true ) ;
 
@@ -29,7 +29,7 @@ class DashboardController extends Controller
             return $isActive;
         }
 
-        return dashboard_data($user->id);
+        return array( 'success' => 'true', 'info' => $this->dashboard_data($user->id) );
     }
 
     public function dashboard_data($user_id)
@@ -40,7 +40,7 @@ class DashboardController extends Controller
 		  							->orderBy(DB::raw('max(recentlyviewedprojects.created_at)'), 'desc')
 		  							->groupBy('projects.id', 'projects.title')
 		  							->select('projects.id', 'projects.title', 'projects.image', 'projects.address',
-		  								'projects.city', 'projects.country', DB::raw('max(recentlyviewedprojects.created_at)'))
+		  								'projects.city', 'projects.country', DB::raw('max(recentlyviewedprojects.created_at) as created_at'))
 		  							->limit(5)
 		  							->get();
 
@@ -49,7 +49,7 @@ class DashboardController extends Controller
 		  							->orderBy(DB::raw('count(recentlyviewedprojects.id)'), 'desc')
 		  							->groupBy('projects.id')
 		  							->select('projects.id', 'projects.title', 'projects.image', 'projects.address',
-		  								'projects.city', 'projects.country', DB::raw('count(recentlyviewedprojects.id)'))
+		  								'projects.city', 'projects.country', DB::raw('count(recentlyviewedprojects.id) as count'))
 		  							->limit(5)
 		  							->get();
 
@@ -59,7 +59,7 @@ class DashboardController extends Controller
 		  							->orderBy(DB::raw('count(favouriteprojects.id)'), 'desc')
 		  							->groupBy('projects.id')
 		  							->select('projects.id', 'projects.title', 'projects.image', 'projects.address',
-		  								'projects.city', 'projects.country', DB::raw('count(favouriteprojects.id)'))
+		  								'projects.city', 'projects.country', DB::raw('count(favouriteprojects.id) as count'))
 		  							->limit(5)
 		  							->get();
 

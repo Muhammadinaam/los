@@ -8,6 +8,7 @@ use Datatables;
 use DB;
 use Voyager;
 use Auth;
+use Response;
 
 class UsersController extends Controller
 {

@@ -32,71 +32,40 @@
 <!--Contact Deatils SECTION-->
 <section id="contact" class="padding">
   <div class="container">
-    <div class="row padding-bottom">
-      <div class="col-md-4 contact_address heading_space">
+    <div class="row">
+      <div class="col-md-12 contact_address heading_space">
       <h2 class="heading heading_space">Get in Touch <span class="divider-left"></span></h2>
-      <p>Fill in the form or reach us on (+971) 111-222-333 in the UAE</p>
-      <div class="address">
-        <i class="icon icon-map-pin"></i>
-        <h4>Visit Us</h4>
-        <p>Union, United Arab Emirates</p>
-      </div>
-      <div class="address">
-        <i class="icon icon-mail"></i>
-        <h4>Email Us</h4>
-        <p><a href="mailto:info@leadsonsite.com">info@leadsonsite.com</a></p>
-      </div>
-      <div class="address">
-        <i class="icon icon-phone4"></i>
-        <h4>Call Us</h4>
-        <p>(971) 111 222 333</p>
-      </div>
-      </div>
-      <div class="col-md-8">
-      <h2 class="heading heading_space">Fill the Contact Form<span class="divider-left"></span></h2>
+      <p>Reach us on (+971) 111-222-333 in the UAE</p>
 
-      @if (count($errors) > 0)
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-      @endif
-
-      <form class="form-inline findus" id="contact-form" method="post" action="{{url('contact-us')}}" >
-
-          
-
-          <div class="row">
-            <div class="col-md-12"><div id="result"></div></div>
-          </div>
-        
         <div class="row">
-          <div class="col-md-6 col-sm-6">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Name"  name="name" id="name" required>
+      
+
+          <div class="col-md-4">
+            <div class="address">
+              <i class="icon icon-map-pin"></i>
+              <h4>Visit Us</h4>
+              <p>Union, United Arab Emirates</p>
             </div>
           </div>
-          <div class="col-md-6 col-sm-6">
-            <div class="form-group">
-              <input type="email" class="form-control" placeholder="Email" name="email" id="email" required>
+          
+          <div class="col-md-4">
+            <div class="address">
+              <i class="icon icon-mail"></i>
+              <h4>Email Us</h4>
+              <p><a href="mailto:info@leadsonsite.com">info@leadsonsite.com</a></p>
             </div>
           </div>
-          <div class="col-md-12">
-            <textarea placeholder="Comment"  name="message" id="message"></textarea>
-            <input type="submit" value="Submit" class="btn-light border-radius" id="btn_submit" >
+          
+          <div class="col-md-4">
+            <div class="address">
+              <i class="icon icon-phone4"></i>
+              <h4>Call Us</h4>
+              <p>(971) 111 222 333</p>
+            </div>
           </div>
+
         </div>
-      </form>
-      <ul class="social_icon heading_top">
-      <li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
-      <li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
-      <li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
-      <li><a href="#." class="vimo"><i class="icon-vimeo4"></i></a></li>
-    </ul>
+
       </div>
       
     </div>
