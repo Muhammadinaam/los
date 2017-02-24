@@ -54,25 +54,34 @@
       </div>
       <div class="col-md-8">
       <h2 class="heading heading_space">Fill the Contact Form<span class="divider-left"></span></h2>
-      <form class="form-inline findus" id="contact-form" onSubmit="return false">
+
+      @if (count($errors) > 0)
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
+
+      <form class="form-inline findus" id="contact-form" method="post" action="{{url('contact-us')}}" >
+
+          
+
           <div class="row">
             <div class="col-md-12"><div id="result"></div></div>
           </div>
         
         <div class="row">
-          <div class="col-md-4 col-sm-4">
+          <div class="col-md-6 col-sm-6">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Name"  name="name" id="name" required>
             </div>
           </div>
-          <div class="col-md-4 col-sm-4">
+          <div class="col-md-6 col-sm-6">
             <div class="form-group">
               <input type="email" class="form-control" placeholder="Email" name="email" id="email" required>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-4">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Website" name="website" id="website" required>
             </div>
           </div>
           <div class="col-md-12">

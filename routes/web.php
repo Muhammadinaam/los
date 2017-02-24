@@ -49,6 +49,8 @@ Route::group( ['prefix' => 'api'], function(){
 
 	Route::get('project-updates', 'UpdatesController@index_api');
 
+	Route::post('dashboard', 'DashboardController@index_api');
+
 
 } );
 

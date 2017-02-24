@@ -70,17 +70,6 @@
 		  <div class="panel-heading"> <i class="fa fa-clock-o" aria-hidden="true"></i> Recently Viewed Projects</div>
 		  <div class="panel-body">
 
-		  	<?php
-		  		$recentlyViewed = DB::table('recentlyviewedprojects')
-		  							->leftJoin('projects', 'projects.id', '=', 'recentlyviewedprojects.project_id')
-		  							->where('recentlyviewedprojects.user_id', Auth::user()->id)
-		  							->orderBy(DB::raw('max(recentlyviewedprojects.created_at)'), 'desc')
-		  							->groupBy('projects.id', 'projects.title')
-		  							->select('projects.id', 'projects.title', 'projects.image', 'projects.address',
-		  								'projects.city', 'projects.country', DB::raw('max(recentlyviewedprojects.created_at)'))
-		  							->limit(5)
-		  							->get();
-		  	?>
 
 		  	
 
@@ -119,16 +108,7 @@
 		  <div class="panel-heading"> <i class="fa fa-line-chart" aria-hidden="true"></i> Trending Projects</div>
 		  <div class="panel-body">
 		  	
-		  	<?php
-		  		$trendingProjects = DB::table('recentlyviewedprojects')
-		  							->leftJoin('projects', 'projects.id', '=', 'recentlyviewedprojects.project_id')
-		  							->orderBy(DB::raw('count(recentlyviewedprojects.id)'), 'desc')
-		  							->groupBy('projects.id')
-		  							->select('projects.id', 'projects.title', 'projects.image', 'projects.address',
-		  								'projects.city', 'projects.country', DB::raw('count(recentlyviewedprojects.id)'))
-		  							->limit(5)
-		  							->get();
-		  	?>
+		  	
 
 		  	
 
@@ -166,16 +146,7 @@
 		  <div class="panel-heading"> <i class="fa fa-star-o" aria-hidden="true"></i> Most Favourite Projects</div>
 		  <div class="panel-body">
 
-		  	<?php
-		  		$mostFavouriteProjects = DB::table('favouriteprojects')
-		  							->leftJoin('projects', 'projects.id', '=', 'favouriteprojects.project_id')
-		  							->orderBy(DB::raw('count(favouriteprojects.id)'), 'desc')
-		  							->groupBy('projects.id')
-		  							->select('projects.id', 'projects.title', 'projects.image', 'projects.address',
-		  								'projects.city', 'projects.country', DB::raw('count(favouriteprojects.id)'))
-		  							->limit(5)
-		  							->get();
-		  	?>
+		  	
 
 		  	
 
@@ -213,14 +184,7 @@
 		  <div class="panel-heading"> <i class="fa fa-tag" aria-hidden="true"></i> Projects with Tag [To Action Now]</div>
 		  <div class="panel-body">
 
-		  	<?php
-		  		$toActionNowProjects = DB::table('projecttags')
-		  							->leftJoin('projects', 'projects.id', '=', 'projecttags.project_id')
-		  							->select('projects.id', 'projects.title', 'projects.image', 'projects.address',
-		  								'projects.city', 'projects.country')
-		  							->where('projecttags.user_id', Auth::user()->id)
-		  							->get();
-		  	?>
+		  	
 
 		  	
 

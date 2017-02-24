@@ -16,6 +16,7 @@ class VerifyCsrfToken extends BaseVerifier
         'billing-monthly',
         'billing-semi-annually',
         'billing-annually',
-        'api/*'
+        'api/*',
+        'contact-us',   
     ];
 }
