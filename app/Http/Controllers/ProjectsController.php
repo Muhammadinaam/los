@@ -17,7 +17,7 @@ class ProjectsController extends Controller
     {
         $result = DB::table('projects')
                         ->select('projects.title', 'projects.industry', 'projects.type', 'projects.country', 'projects.city', 'projects.address')
-                        ->paginate(20);
+                        ->paginate(1);
 
         return array( 'success' => 'true', 'info' => $result );
     }
@@ -50,7 +50,7 @@ class ProjectsController extends Controller
                         ->leftJoin('projectnotes', function($join)use($data){
                             $join->on('projects.id', '=', 'projectnotes.project_id')
                             ->where('projectnotes.user_id', '=', $data['user_id']);
-                        })->paginate(20);
+                        })->paginate(1);
 
         return array( 'success' => 'true', 'info' => $result );
     }

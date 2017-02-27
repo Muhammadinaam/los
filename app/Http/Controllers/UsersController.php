@@ -148,7 +148,7 @@ class UsersController extends Controller
         ]);
         if ($validator->fails()) {    
             $error=$validator->messages();
-            return response()->json( array( 'success' => 'false' , 'errors' => $error ), 422);
+            return response()->json( array( 'success' => 'false' , 'errors' => $error ) );
         }
         
         $content = $request->getContent();
@@ -167,6 +167,7 @@ class UsersController extends Controller
                         'trial_ends_at' => Carbon::now()->addDays(config('app.trial_period_days')),
                         'company_owner' => '1',
                         'activated' => '1',
+                        'role_id' => '2',
                     ]);
                     // date("Y-m-d H:i:s");
         if(!$newUser){
