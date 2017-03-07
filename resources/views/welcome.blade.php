@@ -86,8 +86,8 @@
         data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" 
         data-mask_out="x:0;y:0;s:inherit;e:inherit;"                             
         data-start="800">
-        <a href="#." class="btn-light border-radius button-black">our services</a>
-        <a href="#." class="border-radius btn-dark button-black">Get a quote</a>
+        <a href="{{url('guest/projects')}}" class="btn-light border-radius button-black">Projects</a>
+        <a href="{{url('updates')}}" class="border-radius btn-dark button-black">Updates</a>
         </div>
       </li>
     </ul>               

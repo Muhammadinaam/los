@@ -51,6 +51,25 @@ Route::group( ['prefix' => 'api'], function(){
 
 	Route::post('dashboard', 'DashboardController@index_api');
 
+	Route::get('info', function(){
+
+		$info = array();
+
+		$info['logo'] = Voyager::setting('logo');
+		$info['slogan'] = Voyager::setting('slogan');
+		$info['address'] = Voyager::setting('address');
+		$info['telephone'] = Voyager::setting('telephone');
+		$info['email'] = Voyager::setting('email');
+		$info['latitude'] = Voyager::setting('latitude');
+		$info['longitude'] = Voyager::setting('longitude');
+		$info['facebook'] = Voyager::setting('facebook');
+		$info['twitter'] = Voyager::setting('twitter');
+		$info['google+'] = Voyager::setting('google+');
+
+		return $info;
+
+	});
+
 
 } );
 

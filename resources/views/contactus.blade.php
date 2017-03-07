@@ -35,7 +35,7 @@
     <div class="row">
       <div class="col-md-12 contact_address heading_space">
       <h2 class="heading heading_space">Get in Touch <span class="divider-left"></span></h2>
-      <p>Reach us on (+971) 111-222-333 in the UAE</p>
+      <p>Reach us on {{Voyager::setting('telephone')}} in the UAE</p>
 
         <div class="row">
       
@@ -44,7 +44,7 @@
             <div class="address">
               <i class="icon icon-map-pin"></i>
               <h4>Visit Us</h4>
-              <p>Union, United Arab Emirates</p>
+              <p>{{ Voyager::setting('address') }}</p>
             </div>
           </div>
           
@@ -52,7 +52,7 @@
             <div class="address">
               <i class="icon icon-mail"></i>
               <h4>Email Us</h4>
-              <p><a href="mailto:info@leadsonsite.com">info@leadsonsite.com</a></p>
+              <p><a href="mailto:{{Voyager::setting('email')}}">{{Voyager::setting('email')}}</a></p>
             </div>
           </div>
           
@@ -83,7 +83,7 @@
 
 <script>
   function initMap() {
-    var location = {lat: 25.2317, lng: 55.3240};
+    var location = {lat: {{ Voyager::setting('latitude') }}, lng: {{ Voyager::setting('longitude') }} };
     var map = new google.maps.Map(document.getElementById('map_canvas'), {
       zoom: 15,
       center: location

@@ -17,7 +17,7 @@ class ProjectsController extends Controller
     {
         $result = DB::table('projects')
                         ->select('projects.title', 'projects.industry', 'projects.type', 'projects.country', 'projects.city', 'projects.address')
-                        ->paginate(1);
+                        ->paginate(20);
 
         return array( 'success' => 'true', 'info' => $result );
     }
@@ -38,7 +38,7 @@ class ProjectsController extends Controller
         }
 
         $result = DB::table('projects')
-                        ->select(DB::raw('projects.*, if( favouriteprojects.user_id is null, 0, 1) as isfavourite '))
+                        ->select(DB::raw('projects.*, projecttags.tag, projectnotes.note, if( favouriteprojects.user_id is null, 0, 1) as isfavourite '))
                         ->leftJoin('projecttags', function($join)use($data){
                             $join->on('projects.id', '=', 'projecttags.project_id')
                             ->where('projecttags.user_id', '=', $data['user_id'] );
@@ -50,7 +50,7 @@ class ProjectsController extends Controller
                         ->leftJoin('projectnotes', function($join)use($data){
                             $join->on('projects.id', '=', 'projectnotes.project_id')
                             ->where('projectnotes.user_id', '=', $data['user_id']);
-                        })->paginate(1);
+                        })->paginate(20);
 
         return array( 'success' => 'true', 'info' => $result );
     }
@@ -394,7 +394,7 @@ class ProjectsController extends Controller
     {
         
 
-        return view('projects.show', show_project($id) );
+        return view('projects.show', $this->show_project($id) );
     }
 
     public function show_api()
@@ -410,7 +410,7 @@ class ProjectsController extends Controller
             return $isActive;
         }
 
-        return array ( 'success' => 'true', 'info' => show_project($data['project_id']) );
+        return array ( 'success' => 'true', 'info' => $this->show_project($data['project_id']) );
     }
 
     public function show_project($id)

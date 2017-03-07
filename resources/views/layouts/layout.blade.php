@@ -18,6 +18,8 @@
 <link rel="stylesheet" type="text/css" href="{{asset('public/theme/css/style.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('public/theme/css/loader.css')}}">
 
+
+
 @yield('styles')
 
 <link rel="icon" href="{{asset('public/theme/images/favicon.png')}}">
@@ -29,6 +31,7 @@
 </head>
 
 <body>
+
 <a href="#" class="scrollToTop"><i class="fa fa-angle-up"></i></a>
 <!--Loader-->
 <div class="loader">
@@ -40,13 +43,13 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-sm-6">
-        <p>Updated list of projects and their updates</p>
+        <p>{{Voyager::setting('slogan')}}</p>
       </div>
       <div class="col-md-6 col-sm-6">
         <ul class="social_top">
-          <li><a href="#."><i class="fa fa-facebook"></i></a></li>
-          <li><a href="#."><i class="icon-twitter4"></i></a></li>
-          <li><a href="#."><i class="icon-google"></i></a></li>
+          <li><a href="{{Voyager::setting('facebook')}}"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="{{Voyager::setting('twitter')}}"><i class="icon-twitter4"></i></a></li>
+          <li><a href="{{Voyager::setting('google+')}}"><i class="icon-google"></i></a></li>
         </ul>
       </div>
     </div>
@@ -61,11 +64,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 clearfix">
-        <a class="navbar-brand" href="index.html"><img src="{{asset('public/theme/images/logo.png')}}" alt="logo" class="img-responsive"></a>
+
+        <a class="navbar-brand" href="{{url('')}}"><img src="{{ Voyager::image( Voyager::setting('logo') ) }}" alt="logo" class="img-responsive"></a>
         <ul class="company_info">
-          <li><i class="icon-phone8"></i><strong>(971) 333-444-4567</strong>info@leadsonsite.com</li>
-          <li><i class="icon-location"></i><strong>Union,</strong>Dubai, United Arab Emirates</li>
-          <li><i class="icon-clock5"></i><strong>Mon - Sat 8.00 - 18.00</strong>Sunday Closed</li>
+          <li><i class="icon-phone8"></i><strong>{{Voyager::setting('telephone')}}</strong>{{Voyager::setting('email')}}</li>
+          <li><i class="icon-location"></i>{{Voyager::setting('address')}}</li>
+          <!-- <li><i class="icon-clock5"></i><strong>Mon - Sat 8.00 - 18.00</strong>Sunday Closed</li> -->
         </ul>
       </div>
     </div>
@@ -75,16 +79,16 @@
     <div class="container"> 
       <div class="attr-nav">
         <ul>
-          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="#"><i class="icon-twitter4"></i></a></li>
-          <li><a href="#"><i class="icon-google"></i></a></li>
+          <li><a href="{{Voyager::setting('facebook')}}"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="{{Voyager::setting('twitter')}}"><i class="icon-twitter4"></i></a></li>
+          <li><a href="{{Voyager::setting('google+')}}"><i class="icon-google"></i></a></li>
         </ul>
       </div> 
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
           <i class="fa fa-bars"></i>
         </button>
-        <a class="navbar-brand" href="index.html"><img src="{{asset('public/theme/images/logo_black.png')}}" alt="logo" class="img-responsive"></a>
+        <a class="navbar-brand" href="{{url('')}}"><img src="{{ Voyager::image( Voyager::setting('logo') ) }}" alt="logo" class="img-responsive"></a>
       </div>
       <div class="collapse navbar-collapse" id="navbar-menu">
         <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOut">
@@ -141,14 +145,12 @@
     <div class="row">
       <div class="col-md-4 col-sm-4 footer_panel half_space">
         <h3 class="heading half_space">About Us<span class="divider-left"></span></h3>
-        <a href="index.html" class="footer_logo half_space"><img src="{{asset('public/theme/images/logo-footer.png')}}" alt="Logo"></a>
-        <p>We track construction projects in UAE</p>
+        <a href="{{url('')}}" class="footer_logo half_space"><img src="{{ Voyager::image( Voyager::setting('logo') ) }}" alt="Logo"></a>
+        <p>{{Voyager::setting('slogan')}}</p>
         <ul class="social_icon heading_top">
-          <li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
-          <li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
-          <li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
-          <li><a href="#." class="vimo"><i class="icon-vimeo4"></i></a></li>
+          <li><a href="{{Voyager::setting('facebook')}}"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="{{Voyager::setting('twitter')}}"><i class="icon-twitter4"></i></a></li>
+          <li><a href="{{Voyager::setting('google+')}}"><i class="icon-google"></i></a></li>
         </ul>
       </div>
       <div class="col-md-4 col-sm-4 footer_panel half_space">
@@ -163,9 +165,9 @@
       </div>
       <div class="col-md-4 col-sm-4 footer_panel half_space">
         <h3 class="heading half_space">Keep in Touch <span class="divider-left"></span></h3>
-        <p class=" address"><i class="icon-map-pin"></i>Union, Dubai United Arab Emirates</p>
-        <p class=" address"><i class="icon-phone"></i>(971) 111-112-222</p>
-        <p class=" address"><i class="icon-mail"></i><a href="mailto:info@leadsonsite.com">info@leadsonsite.com</a></p>
+        <p class=" address"><i class="icon-map-pin"></i>{{Voyager::setting('address')}}</p>
+        <p class=" address"><i class="icon-phone"></i>{{Voyager::setting('telephone')}}</p>
+        <p class=" address"><i class="icon-mail"></i><a href="mailto:{{Voyager::setting('email')}}">{{Voyager::setting('email')}}</a></p>
         <img src="{{asset('public/theme/images/footer-map.png')}}" alt="we are here" class="img-responsive">
       </div>
     </div>

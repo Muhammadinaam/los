@@ -213,7 +213,10 @@
                             @if(isset( $setting->value ) && !empty( $setting->value ) && Storage::exists(config('voyager.storage.subfolder') . $setting->value))
                                 <div class="img_settings_container">
                                     <a href="{{ route('voyager.settings.delete_value', $setting->id) }}" class="voyager-x"></a>
-                                    <img src="{{ Storage::url(config('voyager.storage.subfolder') . $setting->value) }}" style="width:200px; height:auto; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
+                                    <!-- <img src="{{ Storage::url(config('voyager.storage.subfolder') . $setting->value) }}" style="width:200px; height:auto; padding:2px; border:1px solid #ddd; margin-bottom:10px;"> -->
+
+                                    <img src="{{  Voyager::image($setting->value) }}" style="width:200px; height:auto; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
+
                                 </div>
                             @elseif($setting->type == "file" && isset( $setting->value ))
                                 <div class="fileType">{{ $setting->value }}</div>

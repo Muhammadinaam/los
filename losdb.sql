@@ -494,7 +494,7 @@ CREATE TABLE `recentlyviewedprojects` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -503,7 +503,7 @@ CREATE TABLE `recentlyviewedprojects` (
 
 LOCK TABLES `recentlyviewedprojects` WRITE;
 /*!40000 ALTER TABLE `recentlyviewedprojects` DISABLE KEYS */;
-INSERT INTO `recentlyviewedprojects` VALUES (1,4,2,'2017-01-20 12:20:35',NULL),(2,4,1,'2017-01-20 12:27:40',NULL);
+INSERT INTO `recentlyviewedprojects` VALUES (1,4,2,'2017-01-20 12:20:35',NULL),(2,4,1,'2017-01-20 12:27:40',NULL),(3,4,2,'2017-03-07 11:54:36',NULL),(4,4,1,'2017-03-07 11:54:54',NULL);
 /*!40000 ALTER TABLE `recentlyviewedprojects` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -552,7 +552,7 @@ CREATE TABLE `settings` (
   `order` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `settings_key_unique` (`key`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -561,6 +561,7 @@ CREATE TABLE `settings` (
 
 LOCK TABLES `settings` WRITE;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
+INSERT INTO `settings` VALUES (3,'slogan','Slogan','Updated list of projects and their updates.','','text',1),(4,'telephone','Telephone','(+971) 111-222-333','','text',3),(5,'email','Email','info@leadsonsite.com','','text',4),(6,'latitude','Google Map Latitude','25.2317','','text',5),(7,'longitude','Google Map Longitude','55.3240','','text',6),(8,'facebook','Facebook','http://www.facebook.com/leadsonsite','','text',7),(9,'twitter','Twitter','http://www.twitter.com/leadsonsite','','text',8),(10,'google+','Google+','http://www.googleplus.com/leadsonsite','','text',9),(11,'logo','Logo','settings/March2017/J2h8tHJlXwSUKR5P7o0O.png','','image',0),(12,'address','Address','Union, United Arab Emirates','','text',2);
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -669,7 +670,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Admin','admin@admin.com','$2y$10$OYGm9r07lgU6EpYAMV2TKuJBrIHqOb1VB5WhDSJmUwovsNP/4Mo/e','JaLd7BYs4HQW4PHx6z4aRJUyEPswyCFQaiI7xDkoRkyBztOOFYH5cu7pRmGJ','2017-01-04 01:46:42','2017-01-20 02:53:48','users/default.png',1,'','','','','',0,0,'','2017-01-20 02:53:48',NULL,NULL,NULL,NULL),(4,'Inaam','minaammunir@gmail.com','$2y$10$Yya5Aea2E1MR/tRDzbbp7uRogJQZKsCopHHwRM1W8j5.0vlkFRN2K','Aeml6f8sKBKlnjDZfLOyTfFlGzBHdcJ4aVn5X9zW8DrZ5eb8flPl8ChK7gNt','2017-01-12 01:56:29','2017-01-20 00:41:12','users/default.png',2,'hashtag','Pakistan','Lahore','123456','123456',1,1,'','2017-01-20 00:41:12','cus_9uwSrgTORwH0iB','Visa','4242','2017-07-11 01:56:29');
+INSERT INTO `users` VALUES (1,'Admin','admin@admin.com','$2y$10$OYGm9r07lgU6EpYAMV2TKuJBrIHqOb1VB5WhDSJmUwovsNP/4Mo/e','JaLd7BYs4HQW4PHx6z4aRJUyEPswyCFQaiI7xDkoRkyBztOOFYH5cu7pRmGJ','2017-01-04 01:46:42','2017-03-07 05:42:51','users/default.png',1,'','','','','',0,0,'','2017-03-07 05:42:51',NULL,NULL,NULL,NULL),(4,'Inaam','minaammunir@gmail.com','$2y$10$Yya5Aea2E1MR/tRDzbbp7uRogJQZKsCopHHwRM1W8j5.0vlkFRN2K','I4gkj07HK4lF2lhgeTKHrSSGRRLV5SsOahOPOBRYDA03HyR4ckRqVancZmXt','2017-01-12 01:56:29','2017-03-07 06:52:28','users/default.png',2,'hashtag','Pakistan','Lahore','123456','123456',1,1,'','2017-03-07 06:52:28','cus_9uwSrgTORwH0iB','Visa','4242','2017-07-11 01:56:29');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -682,4 +683,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-20 17:43:50
+-- Dump completed on 2017-03-07 17:18:57
