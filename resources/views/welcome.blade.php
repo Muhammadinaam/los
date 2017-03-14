@@ -4,95 +4,30 @@
 @section('content')
 
 <!--Slider-->
-<section class="rev_slider_wrapper text-center">            
-<!-- START REVOLUTION SLIDER 5.0 auto mode -->
-  <div id="rev_slider" class="rev_slider"  data-version="5.0">
-    <ul>    
-    <!-- SLIDE  -->
-      <li data-transition="fade">
-        <!-- MAIN IMAGE -->
-        <img src="{{asset('public/theme/images/banner.jpg')}}" alt="" data-bgposition="center center" data-bgfit="cover">                         
-        <!-- LAYER NR. 1 -->
-        <h1 class="tp-caption  tp-resizeme"                             
-        data-x="center"
-        data-y="230"                            
-        data-width="full"
-        data-transform_idle="o:1;"
-        data-transform_in="y:[-200%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" 
-        data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" 
-        data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" 
-        data-mask_out="x:0;y:0;s:inherit;e:inherit;"                             
-        data-start="800">Leads on Site
-        </h1>
-        <div class="tp-caption  tp-resizeme"                            
-        data-x="center"
-        data-y="290"                            
-        data-width="full"
-        data-transform_idle="o:1;"
-        data-transform_in="y:[-200%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" 
-        data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" 
-        data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" 
-        data-mask_out="x:0;y:0;s:inherit;e:inherit;"                             
-        data-start="800">
-            <p>We have updated list of Projects</p>
-        </div>
-        
-        <div class="tp-caption  tp-resizeme"                            
-        data-x="center"
-        data-y="352"                            
-        data-width="full"
-        data-transform_idle="o:1;"
-        data-transform_in="y:[-200%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" 
-        data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" 
-        data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" 
-        data-mask_out="x:0;y:0;s:inherit;e:inherit;"                             
-        data-start="800">
-        <a href="{{url('guest/projects')}}" class="btn-light border-radius button-black">Projects</a>
-        <a href="{{url('updates')}}" class="border-radius btn-dark button-black">Updates</a>
-        </div>
-      </li>
+<section class="mbr-section mbr-section-hero mbr-section-full mbr-parallax-background mbr-section-with-arrow mbr-after-navbar" id="header1-8" style="background-image: url({{asset('public/theme/images/banner2.jpg')}});">
 
-      <li data-transition="fade">
-        <img src="{{asset('public/theme/images/banner2.jpg')}}"  alt="" data-bgposition="center center" data-bgfit="cover">                           
-        <h1 class="tp-caption  tp-resizeme"                             
-        data-x="center"
-        data-y="230"                            
-        data-width="full"
-        data-transform_idle="o:1;"
-        data-transform_in="y:[-200%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" 
-        data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" 
-        data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" 
-        data-mask_out="x:0;y:0;s:inherit;e:inherit;"                             
-        data-start="800">Leads on Site
-        </h1>
-        <div class="tp-caption  tp-resizeme"                            
-        data-x="center"
-        data-y="286"                            
-        data-width="full"
-        data-transform_idle="o:1;"
-        data-transform_in="y:[-200%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" 
-        data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" 
-        data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" 
-        data-mask_out="x:0;y:0;s:inherit;e:inherit;"                             
-        data-start="800"><p>We have updated list of Projects</span>
+    
+
+    <div class="mbr-table-cell">
+
+        <div class="container">
+            <div class="row">
+                <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
+
+                    <h1 class="mbr-section-title display-1">LEADS ON SITE</h1>
+                    <p class="mbr-section-lead lead">Follow projects from early planning stages till it is under construction and completed, we will keep you up-to-date with all major events during each stage..</p>
+                    <div class="mbr-section-btn"><a class="btn btn-lg btn-primary"
+                    href="{{ Auth::check() ? url('projects') : url('guest/projects') }}">PROJECTS</a> </div>
+                </div>
+            </div>
         </div>
-        <div class="tp-caption  tp-resizeme"                            
-        data-x="center"
-        data-y="352"                            
-        data-width="full"
-        data-transform_idle="o:1;"
-        data-transform_in="y:[-200%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" 
-        data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" 
-        data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" 
-        data-mask_out="x:0;y:0;s:inherit;e:inherit;"                             
-        data-start="800">
-        <a href="{{url('guest/projects')}}" class="btn-light border-radius button-black">Projects</a>
-        <a href="{{url('updates')}}" class="border-radius btn-dark button-black">Updates</a>
-        </div>
-      </li>
-    </ul>               
-  </div><!-- END REVOLUTION SLIDER -->
-</section>  
+    </div>
+
+    <div class="mbr-arrow mbr-arrow-floating" aria-hidden="true"><a href="#next"><i class="mbr-arrow-icon"></i></a></div>
+
+</section>
+<!-- Slider End -->
+    
 
 
 <!--ABout US-->
