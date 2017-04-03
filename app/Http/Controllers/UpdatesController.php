@@ -55,11 +55,16 @@ class UpdatesController extends Controller
         return view( 'updates.index' );
     }
 
-    public function index_api()
+    public function index_api(Request $request)
     {
         $data = json_decode( $request->getContent(), true ) ;
 
         $user = \App\User::find( $data['user_id'] );
+
+        if($user == null)
+        {
+              return array('error'=>'user not found');
+        }
 
         $isActive = $user->isActive();
 

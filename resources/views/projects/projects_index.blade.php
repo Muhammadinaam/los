@@ -153,7 +153,7 @@ th
 
 
 <!--SERVICE SECTION-->
-<section id="projects" style="padding: 20px 50px 0px 50px;">
+<section id="projects" style="padding: 20px 10px 0px 10px;">
 
       
       <div style="padding-left: 15px;" class="row">

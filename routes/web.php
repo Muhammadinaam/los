@@ -44,10 +44,10 @@ Route::group( ['prefix' => 'api'], function(){
 	Route::post('add-note', 'ProjectsController@addNote_api');
 	Route::post('mark-favourite', 'ProjectsController@markFavourite_api');
 	Route::post('remove-favourite', 'ProjectsController@removeFavourite_api');
-	Route::get('project/{id}', 'ProjectsController@show_api');
+	Route::post('project/{id}', 'ProjectsController@show_api');
 
 
-	Route::get('project-updates', 'UpdatesController@index_api');
+	Route::post('project-updates', 'UpdatesController@index_api');
 
 	Route::post('dashboard', 'DashboardController@index_api');
 

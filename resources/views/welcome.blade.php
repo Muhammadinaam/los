@@ -17,7 +17,7 @@
                     <h1 class="mbr-section-title display-1">LEADS ON SITE</h1>
                     <p class="mbr-section-lead lead">Follow projects from early planning stages till it is under construction and completed, we will keep you up-to-date with all major events during each stage..</p>
                     <div class="mbr-section-btn"><a class="btn btn-lg btn-primary"
-                    href="{{ Auth::check() ? url('projects') : url('guest/projects') }}">PROJECTS</a> </div>
+                    href="{{ Auth::check() ? url('search-projects') : url('guest/projects') }}">PROJECTS</a> </div>
                 </div>
             </div>
         </div>
@@ -104,6 +104,49 @@
     </div>
   </div>
 </section>
+
+
+<?php
+  $slider_images = \App\Sliderimage::all();
+?>
+
+@if( count($slider_images) > 0 )
+<!--What WE Do-->
+<section id="wedo" class="padding bg_grey">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+       <!-- <h2 class="heading heading_space">What We Do <span class="divider-left"></span></h2> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="slider_wrapper">
+          <div id="do-slider" class="owl-carousel">
+            
+
+            @foreach( $slider_images as $slider_image )
+            <div class="item">
+              <div class="content_wrap">
+                <div class="image">
+                  <img src="{{Voyager::image($slider_image->image)}}" alt="Construction" class="img-responsive border-radius">
+                </div>
+                <h3><a href="#">{{$slider_image->title}}</a></h3>
+                <p>{{$slider_image->description}}</p> 
+                <!-- <a href="blog_detail.html" class="btn-light border-radius button-hover">service detail</a> -->
+              </div>
+            </div>
+            @endforeach
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+@endif
 
 
 

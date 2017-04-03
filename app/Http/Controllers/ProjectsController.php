@@ -394,10 +394,10 @@ class ProjectsController extends Controller
     {
         
 
-        return view('projects.show', $this->show_project($id) );
+        return view('projects.show', $this->show_project($id, Auth::user()->id) );
     }
 
-    public function show_api()
+    public function show_api(Request $request)
     {
         $data = json_decode( $request->getContent(), true ) ;
 
@@ -410,17 +410,17 @@ class ProjectsController extends Controller
             return $isActive;
         }
 
-        return array ( 'success' => 'true', 'info' => $this->show_project($data['project_id']) );
+        return array ( 'success' => 'true', 'info' => $this->show_project($data['project_id'], $user->id ) );
     }
 
-    public function show_project($id)
+    public function show_project($id, $user_id)
     {
         $project = Project::find($id);
 
         $isFav = 0;
 
         if ( count ( DB::table('favouriteprojects')
-                    ->where('user_id', Auth::user()->id)
+                    ->where('user_id', $user_id)
                     ->where('project_id', $project->id)
                     ->first() ) > 0 )
         {
@@ -430,7 +430,7 @@ class ProjectsController extends Controller
         $tag = '';
 
         $tagTable = DB::table('projecttags')
-                    ->where('user_id', Auth::user()->id)
+                    ->where('user_id', $user_id)
                     ->where('project_id', $project->id)
                     ->first();
 
@@ -440,7 +440,7 @@ class ProjectsController extends Controller
         $note = '';
 
         $noteTable = DB::table('projectnotes')
-                    ->where('user_id', Auth::user()->id)
+                    ->where('user_id', $user_id)
                     ->where('project_id', $project->id)
                     ->first();
 
@@ -450,7 +450,7 @@ class ProjectsController extends Controller
         
         DB::table('recentlyviewedprojects')
                 ->insert([
-                        ['user_id' => Auth::user()->id, 'project_id' => $project->id ]
+                        ['user_id' => $user_id, 'project_id' => $project->id ]
                     ]);
 
         return compact('project', 'isFav', 'tag', 'note');
